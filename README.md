@@ -1,4 +1,4 @@
-ProjetAndroidTeamLanister
+ProjetAndroidTeamLannister
 =========================
 
-Projet Androïde fin d’années Licence Réseaux Télécoms
+Projet Androïd fin d’années Licence Réseaux Télécoms
