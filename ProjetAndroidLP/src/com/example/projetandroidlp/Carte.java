@@ -10,7 +10,7 @@ public class Carte implements Serializable
 
   private static final long serialVersionUID = 0l;
 
-  public static enum Suite
+  public static enum Couleur
   {
     CARREAU,
     COEUR,
@@ -24,7 +24,7 @@ public class Carte implements Serializable
   public static final byte ROI = 13;
 
 
-  public final Suite suite;
+  public final Couleur couleur;
   
   public final byte type;
 
@@ -33,9 +33,9 @@ public class Carte implements Serializable
    * @param s la suite.
    * @param t le type.
    */
-  public Carte (Suite s, byte t)
+  public Carte (Couleur c, byte t)
   {
-    suite = s;
+    couleur = c;
     type = t;
   }
 
