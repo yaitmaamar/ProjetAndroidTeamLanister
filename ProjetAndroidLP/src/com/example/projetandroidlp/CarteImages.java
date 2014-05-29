@@ -12,7 +12,8 @@ import android.util.Log;
  */
 public class CarteImages
 {
-  private static final String TAG = "BJTrainer/CardImages";
+  /** Tag pour les logs */
+  private static final String TAG = "CarteImages";
 
   /** L'objet qui stocke les ressources  */
   private Resources res;
@@ -24,7 +25,7 @@ public class CarteImages
    * Constructeur.
    * @param r Ressources à utiliser.
    */
-  public CarteImages (Resources r)
+  public CarteImages(Resources r)
   {
     res = r;
     requeteur = getCarte (new Carte (Carte.Couleur.TREFLE, Carte.VALET));
