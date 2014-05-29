@@ -19,17 +19,17 @@ public class CarteImages
   /** L'objet qui stocke les ressources  */
   private Resources res;
 
-  /** Store a dummy ressource here for size requests.  */
-  private Drawable dummy;
+  /** Objet servant aux requêtes pour les tailles de cartes.  */
+  private Drawable requeteur;
 
   /**
-   * Construct it.
-   * @param r Ressources to use.
+   * Constructeur.
+   * @param r Ressources à utiliser.
    */
   public CarteImages (Resources r)
   {
     res = r;
-    dummy = getCarte (new Carte (Carte.Couleur.TREFLE, Carte.VALET));
+    requeteur = getCarte (new Carte (Carte.Couleur.TREFLE, Carte.VALET));
 
     Log.d (TAG, String.format ("Images des cartes:"));
     Log.d (TAG, String.format ("  largeur:  %d", getLargeur()));
@@ -38,37 +38,36 @@ public class CarteImages
   }
 
   /**
-   * Get width of images returned.
-   * @return Card width in pixels.
+   * Recupère la largeur de l'image.
+   * @return Largeur de la carte en pixels.
    */
   public int getLargeur()
   {
-    return dummy.getIntrinsicWidth ();
+    return requeteur.getIntrinsicWidth ();
   }
 
   /**
-   * Get height of images returned.
-   * @return Card height in pixels.
+   * Recupère la hauteur de l'image.
+   * @return Hauteur de l'image en pixels.
    */
   public int getHauteur()
   {
-    return dummy.getIntrinsicHeight ();
+    return requeteur.getIntrinsicHeight ();
   }
 
   /**
-   * Get minimum amount (also in pixels) we have to shift a card to the right
-   * in order to have the lower one visible.
-   * @return Minimum shift amount in pixels.
+   * Recupère la quantité minimale (en pixels) pour pouvoir déplacer une carte vers la droite afin d'avoir la plus faible visible.
+   * @return Déplacement minimum en pixels
    */
-  public int getDecalageMinimum()
+  public int getDeplacementMinimum()
   {
     return getLargeur() * 12 / 72;
   }
 
   /**
-   * Get the drawable for a specified card.
-   * @param c The card we want to draw.
-   * @return Drawable for it.
+   * Récupère l'image à afficher pour la carte passée en paramètre.
+   * @param c La carte que l'on veut afficher.
+   * @return l'image à afficher
    */
   public Drawable getCarte(Carte c)
   {
@@ -115,7 +114,9 @@ public class CarteImages
     return res.getDrawable (IDs[ind]);
   }
 
-  /** Auto-generated array mapping integers to IDs of corresponding cards.  */
+  /**
+   *  Tableau d'entiers généré automatiquement reliant des entiers aux IDs des cartes correspondantes.
+   */
   private static final int[] IDs = new int[]
     {
       -1
