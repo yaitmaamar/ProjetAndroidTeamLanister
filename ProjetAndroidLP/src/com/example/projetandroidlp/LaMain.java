@@ -168,12 +168,8 @@ public class LaMain implements Serializable
     return paire;
   }
 
-  /**
-   * If this is a pair, get the pair card value.
-   * @return The pair card value.
-   * @throws RuntimeException If this is not a pair.
-   */
-  public byte getPairValue ()
+  
+  public byte getValeurePaire ()
   {
     if (!estPaire ())
       throw new RuntimeException ("Ce n'est pas une paire");
@@ -185,10 +181,10 @@ public class LaMain implements Serializable
   }
 
   /**
-   * Si la LaMain dépasse 21.
+   * Si la LaMain est perdante.
    * @return True si la Main est au dessu de 21.
    */
-  public boolean isBusted ()
+  public boolean estPerdante ()
   {
     return total > 21;
   }
