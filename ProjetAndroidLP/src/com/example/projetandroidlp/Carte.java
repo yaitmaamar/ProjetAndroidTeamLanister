@@ -62,7 +62,7 @@ public class Carte implements Serializable
 
   /**
    *
-   * @return True Si c'est un AS.
+   * @return True si c'est un AS.
    */
   public boolean estAS ()
   {

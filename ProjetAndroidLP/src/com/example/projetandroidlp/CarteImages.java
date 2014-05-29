@@ -7,13 +7,11 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 /**
- * Cette classe gère l'accès au images des cartes. 
+ * Cette classe gère l'accès aux images des cartes. 
  * Elle est conçue pour que ces images puissent être changées facilement.
  */
 public class CarteImages
 {
-
-  /** Log tag for this class.  */
   private static final String TAG = "BJTrainer/CardImages";
 
   /** L'objet qui stocke les ressources  */
