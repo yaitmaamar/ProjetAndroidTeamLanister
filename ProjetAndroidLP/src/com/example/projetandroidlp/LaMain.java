@@ -27,7 +27,7 @@ public class LaMain implements Serializable
   /** si blackjack.  */
   private boolean blackJack;
 
-  /** si c'est une paire qu'on peut séparé.  */
+  /** si c'est une paire qu'on peut séparer.  */
   private boolean paire;
 
   /**
