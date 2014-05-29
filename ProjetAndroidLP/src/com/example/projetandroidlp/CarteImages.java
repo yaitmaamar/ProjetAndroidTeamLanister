@@ -25,9 +25,8 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 /**
- * This class handles access to the card image ressources.  It is intended
- * so that these can be changed flexibly, from access via multiple files to
- * a single large image which is cropped and the like.
+ * Cette classe gère l'accès au images des cartes. 
+ * Elle est conçue pour que ces images puissent être changées facilement.
  */
 public class CarteImages
 {
@@ -35,7 +34,7 @@ public class CarteImages
   /** Log tag for this class.  */
   private static final String TAG = "BJTrainer/CardImages";
 
-  /** The stored ressources object.  */
+  /** L'objet qui stocke les ressources  */
   private Resources res;
 
   /** Store a dummy ressource here for size requests.  */
