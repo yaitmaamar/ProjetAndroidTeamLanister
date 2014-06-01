@@ -23,7 +23,7 @@ public class Jeux implements Serializable
     JOUEUR_BLACKJACK,
     JOUEUR_PERDU,
     JOUEUR_GAGNE, /* Avec le meilleur score.  */
-    PUSH,
+    EGALITE,
     CROUPIER_BLACKJACK,
     CROUPIER_PERDU,
     CROUPIER_GAGNE, /* Avec le meilleur score.  */
@@ -262,7 +262,7 @@ public class Jeux implements Serializable
     if (JoueurBJ && CroupierBJ)
       {
         Attente = false;
-        Resultat = Fin.PUSH;
+        Resultat = Fin.EGALITE;
         Joueur = 0.0f;
       }
     else if (Joueur.getTotal () > 21)
@@ -292,7 +292,7 @@ public class Jeux implements Serializable
     else if (Joueur.getTotal () == Croupier.getTotal ())
       {
         /* Attente pas connue  */
-    	Resultat = Fin.PUSH;
+    	Resultat = Fin.EGALITE;
         payer = 0.0f;
       }
     else if (Joueur.getTotal () > Croupier.getTotal ())
