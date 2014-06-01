@@ -162,7 +162,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     /* Si la main est perdante, affiche un message par dessus. */
     if (mainActuelle.estPerdante())
       {
-        final String text = context.getString (R.string.busted);
+        final String text = context.getString (R.string.perdu);
         Paint p = new Paint();
         p.setTextAlign(Paint.Align.CENTER);
         p.setColor(0xFFFF0000);

@@ -114,20 +114,20 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     CarteImages img = new CarteImages (getResources ());
     deck = new PiocheAleatoire();
 
-    SurfaceView v = (SurfaceView) findViewById (R.id.joueur_cards);
+    SurfaceView v = (SurfaceView) findViewById (R.id.joueur_cartes);
     afficheJoueur = new AffichageDeLaMain (this, img, v);
 
-    v = (SurfaceView) findViewById (R.id.croupier_cards);
+    v = (SurfaceView) findViewById (R.id.croupier_cartes);
     afficheCroupier = new AffichageDeLaMain (this, img, v);
 
-    allLayout = findViewById (R.id.whole_layout);
-    message = (TextView) findViewById (R.id.Jeux_message);
-    montant = (TextView) findViewById (R.id.total_display);
+    allLayout = findViewById (R.id.all_layout);
+    message = (TextView) findViewById (R.id.jeu_message);
+    montant = (TextView) findViewById (R.id.total_affichage);
 
-    btnTirer = (Button) findViewById (R.id.TIRER_button);
-    btnPasser = (Button) findViewById (R.id.PASSER_button);
-    btnDOUBLERr = (Button) findViewById (R.id.DOUBLER_button);
-    btnSeparer = (Button) findViewById (R.id.Separe_button);
+    btnTirer = (Button) findViewById (R.id.tirer_bouton);
+    btnPasser = (Button) findViewById (R.id.passer_bouton);
+    btnDOUBLERr = (Button) findViewById (R.id.double_bouton);
+    btnSeparer = (Button) findViewById (R.id.separe_bouton);
 
     allLayout.setOnClickListener (this);
     btnTirer.setOnClickListener (this);
@@ -279,7 +279,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
       {
         if (!jeuCourant.peutDOUBLER ())
           {
-            Toast t = Toast.makeText (this, getString (R.string.peutDOUBLER),
+            Toast t = Toast.makeText (this, getString (R.string.peuDouble),
                                       Toast.LENGTH_SHORT);
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
@@ -293,7 +293,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
       {
         if (!jeuCourant.peutSepare ())
           {
-            Toast t = Toast.makeText (this, getString (R.string.peutSepare),
+            Toast t = Toast.makeText (this, getString (R.string.peusepare),
                                       Toast.LENGTH_SHORT);
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
@@ -373,27 +373,27 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         case DIALOG_AIDE:
           dlg.setContentView (R.layout.aide);
 
-          TextView tv = (TextView) dlg.findViewById (R.id.help_link);
+          TextView tv = (TextView) dlg.findViewById (R.id.aide_lien);
           tv.setMovementMethod (LinkMovementMethod.getInstance ());
 
-          dlg.setTitle (R.string.help_title);
+          dlg.setTitle (R.string.aide_title);
           break;
 
         case DIALOG_A_PROPOS:
           dlg.setContentView (R.layout.a_propos);
 
-          tv = (TextView) dlg.findViewById (R.id.about_version);
-          final String aboutVersion = getString (R.string.about_version);
+          tv = (TextView) dlg.findViewById (R.id.a_propos_version);
+          final String a_proposVersion = getString (R.string.a_propos_version);
           final String appName = getString (R.string.app_name);
           final String appVersion = getString (R.string.app_version);
-          tv.setText (String.format (aboutVersion, appName, appVersion));
+          tv.setText (String.format (a_proposVersion, appName, appVersion));
 
-          tv = (TextView) dlg.findViewById (R.id.about_link1);
+          tv = (TextView) dlg.findViewById (R.id.a_propos_lien1);
           tv.setMovementMethod (LinkMovementMethod.getInstance ());
-          tv = (TextView) dlg.findViewById (R.id.about_link2);
+          tv = (TextView) dlg.findViewById (R.id.a_propos_lien2);
           tv.setMovementMethod (LinkMovementMethod.getInstance ());
 
-          dlg.setTitle (R.string.about_title);
+          dlg.setTitle (R.string.a_propos_title);
           break;
 
         default:
@@ -468,9 +468,9 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     if (optimale == null || (jeuCourant.TIRERSoft17 != h17Strategie))
       {
         optimale = new Strategie ();
-        optimale.fill (getResources ().getXml (R.xml.Strategie_PASSER17), false);
+        optimale.fill (getResources ().getXml (R.xml.strategie_passer17), false);
         if (jeuCourant.Soft17)
-          optimale.remplir (getResources ().getXml (R.xml.Strategie_h17), true);
+          optimale.remplir (getResources ().getXml (R.xml.strategie_h17), true);
 
         h17Strategie = jeuCourant.Soft17;
       }
@@ -486,7 +486,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
     String msg = "";
     if (jeuCourant.estEnAttente ())
-      msg = getString (R.string.joueur_choice);
+      msg = getString (R.string.joueur_choix);
     else
       {
         final byte joueurTotal = jeuCourant.getJoueurMain ().getTotal ();
@@ -551,7 +551,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           msg = getString (R.string.btnPasser);
           break;
         case DOUBLER:
-          msg = getString (R.string.btnDOUBLERr);
+          msg = getString (R.string.btnDouble);
           break;
         case Separe:
           msg = getString (R.string.btnSeparer);
