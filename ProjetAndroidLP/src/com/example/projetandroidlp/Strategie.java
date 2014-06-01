@@ -377,7 +377,7 @@ public class Strategie
     if (avant.length () == 0)
       throw new RuntimeException ("Pas d'index from dans les liens!");
     if (tiret && apres.length () == 0)
-      throw new RuntimeException ("Tiret masi pas d'index to dans les liens!");
+      throw new RuntimeException ("Tiret mais pas d'index to dans les liens!");
 
     int[] res = new int[2];
     res[0] = Integer.parseInt(avant.toString ());
