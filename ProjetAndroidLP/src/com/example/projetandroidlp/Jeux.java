@@ -252,7 +252,7 @@ public class Jeux implements Serializable
   }
 
   /**
-   * Modifie les stats internes
+   * Calcule la fin de partie et le montant gagné
    */
   private void Calculer()
   {

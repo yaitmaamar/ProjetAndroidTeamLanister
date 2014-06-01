@@ -6,13 +6,14 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 /**
- * A playing strategy, given as matrix with optimal decisions based
- * on player total and dealer card.
+ * 
+ * Strategie de jeu sous forme de matrice pour choisir
+ * les meilleurs decisions pour le croupier et le jouer en fonction de leur cartes
  */
 public class Strategie
 {
 
-  /** Namespace for strategy XML files.  */
+  /** Namespace pour le fichier xml de strategie.  */
   private static final String NS
     = "http://www.domob.eu/projects/bjtrainer/strategy/";
 
@@ -35,15 +36,17 @@ public class Strategie
    */
   public enum Matrice
   {
-    HARD,
-    SOFT,
-    PAIR
+    HARD, /*cartes différentes*/
+    SOFT, /*un as et une/des cartes*/
+    PAIR  /*cartes paires*/
   }
 
   /**
-   * Possible decisions as returned when queried.  The difference to
-   * MatrixEntry is that here we already resolve double vs hit/stand.
-   * @see MatrixEntry
+   * 
+   * Decisions possibles retournées.
+   * La différence avec EntreeMatrice est que le choix entre doubler et tirer/passer à déjà été fait
+   * 
+   * @see EntreeMatrice
    */
   public enum Decision
   {
@@ -53,18 +56,17 @@ public class Strategie
     DOUBLER		// Double la mise puis pioche une carte, oblige le joueur à passer après
   }
 
-  /* For simplicity, we store entries without translating the index, thus
-     keeping some entries empty.  First index always represents the player's
-     cards, and the second index the dealer's card.
+  /* Le premier index représente les carte du joueur
+     Le deuxième celle du croupier     
 
-  /** Decisions on hard totals.  */
-  MatrixEntry[][] hard;
+  /** Decisions pour les totals hard.  */
+  EntreeMatrice[][] hard;
 
-  /** Decisions on soft totals.  */
-  MatrixEntry[][] soft;
+  /** Decisions pour les totals soft.  */
+  EntreeMatrice[][] soft;
 
-  /** Decisions on pairs.  Player index is single card, not total.  */
-  MatrixEntry[][] pair;
+  /** Decisions pour les totals paires. L'index du joueur représente une des 2 cartes.  */
+  EntreeMatrice[][] pair;
 
   /**
    * Construit une matrice vide
@@ -81,10 +83,10 @@ public class Strategie
   }
 
   /**
-   * Given a player and dealer hand, decide what to do.
-   * @param g The current game.
-   * @return Playing decision according to the strategy.
-   * @throws RuntimeException If the strategy has no entry.
+   * Décide quoi faire selon la carte du joueur et du croupier
+   * @param j Le jeu courant.
+   * @return Décision de jeu selon la stratégie.
+   * @throws RuntimeException si la stratéfie n'a pas d'entrée.
    */
   public Decision decider (Jeu j)
   {
@@ -135,67 +137,66 @@ public class Strategie
           assert (false);
       }
 
-    /* Silence compiler.  */
+    /*   */
     return Decision.PASSER;
   }
 
   /**
-   * Fill by parsing an XML file.
-   * @param p The parser to use.
-   * @param overwrite Assume already filled in matrix and only change
-   *                  the given entries by overwriting them.
-   * @throws RuntimeException On error with the parsing.
+   * Remplie les matrices en parsant le fichier xml
+   * @param p le parser.
+   * @param ecraser pour seulement changer les entrées données en les écrasant
+   * @throws RuntimeException si erreur de parsing
    */
-  public void remplir(XmlPullParser p, boolean reecrire)
+  public void remplir(XmlPullParser p, boolean ecraser)
   {
     try
       {
         p.setFeature (XmlPullParser.FEATURE_PROCESS_NAMESPACES, true);
         if (p.next () != XmlPullParser.START_DOCUMENT)
-          throw new RuntimeException ("Expected document start event!");
+          throw new RuntimeException ("Attendu, le lancement du document!");
         p.nextTag ();
         if (!checkTag (p, "strategie"))
-          throw new RuntimeException ("Expected strategy as root element!");
+          throw new RuntimeException ("Attendu, stratégie à la racine!");
 
         p.nextTag ();
         if (!checkTag (p, "hard"))
-          throw new RuntimeException ("Expected hard tag!");
-        analyserMatrice(p, hard, reecrire);
+          throw new RuntimeException ("Attendu, hard tag!");
+        analyserMatrice(p, hard, ecraser);
 
         p.nextTag ();
         if (!checkTag (p, "soft"))
-          throw new RuntimeException ("Expected soft tag!");
-        analyserMatrice(p, soft, reecrire);
+          throw new RuntimeException ("Attendu, soft tag!");
+        analyserMatrice(p, soft, ecraser);
 
         p.nextTag ();
         if (!checkTag (p, "pairs"))
-          throw new RuntimeException ("Expected pair tag!");
-        analyserMatrice(p, pair, reecrire);
+          throw new RuntimeException ("Attendu, paire tag!");
+        analyserMatrice(p, pair, ecraser);
 
         if (p.next () != XmlPullParser.END_TAG)
-          throw new RuntimeException ("Additional matrix-tags found!");
+          throw new RuntimeException ("Tags de matrice trouvés!");
         if (p.next () != XmlPullParser.END_DOCUMENT)
-          throw new RuntimeException ("Expected end of document!");
+          throw new RuntimeException ("Attendu, fin du document!");
       }
     catch (XmlPullParserException exc)
       {
         exc.printStackTrace ();
-        throw new RuntimeException ("Parsing failed: " + exc.getMessage ());
+        throw new RuntimeException ("Le parsing à échoué: " + exc.getMessage ());
       }
     catch (IOException exc)
       {
         exc.printStackTrace ();
-        throw new RuntimeException ("Reading XML failed: " + exc.getMessage ());
+        throw new RuntimeException ("La lecture du XML à échoué: " + exc.getMessage ());
       }
 
-    if (!filledIn ())
-      throw new RuntimeException ("Matrix not fully filled in by XML!");
+    if (!remplie ())
+      throw new RuntimeException ("La matrice n'a pas été complétement remplie par le XML!");
   }
 
   /**
-   * Return the matrices.  This is used for the strategy display.
-   * @param m The matrix queried for.
-   * @return This matrix.
+   * Retourne les stratégies. Utilisé pour afficher les stratégies
+   * @param m La matrice recherchée.
+   * @return la matrice.
    */
   public MatriceEntree[][] getMatrice(Matrice m)
   {
@@ -211,14 +212,16 @@ public class Strategie
           assert (false);
       }
 
-    /* Silence compiler.  */
+    /* */
     return null;
   }
 
   /**
    * Check that every entry that should be filled in is actually
    * already filled in.
-   * @return True iff this is the case.
+   * 
+   * Regarde si toutes les entrées qui devraient être remplies le sont bien
+   * @return True si oui.
    */
   private boolean remplie()
   {
@@ -233,8 +236,8 @@ public class Strategie
   }
 
   /**
-   * Helper routine to fill a matrix with NAN values.
-   * @param m Matrix to fill.
+   * Remplie les matrices avec des valeurs NAN.
+   * @param m la matric à remplir.
    */
   private static void nanMatrice(MatriceEntree[][] m)
   {
@@ -244,11 +247,11 @@ public class Strategie
   }
 
   /**
-   * Helper routine checking whether a matrix is filled in properly.
-   * @param m The matrix to check.
-   * @param from Check from this player index.
-   * @param to Check to this player index.
-   * @return True iff the selected part is all different from NAN.
+   *Regarde si une matrice est bien remplie
+   * @param m la matrice à regarder.
+   * @param from regarde depuis cet index du joueur.
+   * @param to regarde sur cet index du joueur.
+   * @return True si différent de NAN.
    */
   private static boolean remplie(MatriceEntree[][] m, int from, int to)
   {
@@ -264,29 +267,29 @@ public class Strategie
   }
 
   /**
-   * Helper routine to check for found element, handling the namespace.
-   * @param p The parser to use.
-   * @param el The element we want.
-   * @return True iff the current element is the one.
-   * @throws RuntimeException If namespace does not match.
+   * Regarde les éléments trouvés et s'occupe deu namespace.
+   * @param p le parse.
+   * @param el l'élément à trouver.
+   * @return True si c'est l'élément.
+   * @throws RuntimeException si le namespace n'est pas le bon.
    */
-  private static boolean checkTag(XmlPullParser p, String elem)
+  private static boolean verifieTag(XmlPullParser p, String elem)
   {
     if (!p.getNamespace().equals (NS))
-      throw new RuntimeException ("Wrong namespace in strategy XML!");
+      throw new RuntimeException ("Mauvais namespace pour la stratégie XML!");
     return p.getName().equals (elem);
   }
 
   /**
-   * Parse parts of one matrix.
-   * @param p The parser to use.
-   * @param m The matrix to fill in.
-   * @param overwrite Assume matrix already filled in and overwrite it.
-   * @throws RuntimeException If parsing fails.
-   * @throws XmlPullParserException If the parser throws;
-   * @throws IOException If reading the XML fails.
+   * Parse les parties d'une matrice
+   * @param p le parsezr.
+   * @param m la matrice à remplir.
+   * @param ecraser Pour ecraser la matrice déjà remplie.
+   * @throws RuntimeException si le parsing échoue.
+   * @throws XmlPullParserException si le parser throw une exception;
+   * @throws IOException si la lecture du xml échoue.
    */
-  private static void analyserMatrice(XmlPullParser p, MatriceEntree[][] m, boolean reecrire)
+  private static void analyserMatrice(XmlPullParser p, MatriceEntree[][] m, boolean ecraser)
     throws XmlPullParserException, IOException
   {
     while (true)
@@ -295,8 +298,8 @@ public class Strategie
         if (type == XmlPullParser.END_TAG)
           return;
         assert (type == XmlPullParser.START_TAG);
-        if (!checkTag (p, "group"))
-          throw new RuntimeException ("Expected group tag!");
+        if (!verifieTag (p, "group"))
+          throw new RuntimeException ("Attendu, group tag!");
 
         final String joueur = p.getAttributeValue (null, "joueur");
         final String croupier = p.getAttributeValue (null, "croupier");
@@ -309,76 +312,76 @@ public class Strategie
         final String action = p.nextText();
         MatriceEntree valeur;
         if (action.equals ("H"))
-          value = MatrixEntry.TIRER;
+          value = MatriceEntree.TIRER;
         else if (action.equals ("S"))
-          value = MatrixEntry.PASSER;
+          value = MatriceEntree.PASSER;
         else if (action.equals ("SP"))
-          value = MatrixEntry.SEPARER;
+          value = MatriceEntree.SEPARER;
         else if (action.equals ("Dh"))
-          value = MatrixEntry.DOUBLER_TIRER;
+          value = MatriceEntree.DOUBLER_TIRER;
         else if (action.equals ("Ds"))
-          value = MatrixEntry.DOUBLER_PASSER;
+          value = MatriceEntree.DOUBLER_PASSER;
         else
           throw new RuntimeException ("Invalid action: " + action);
 
         for (int i = joueurBds[0]; i <= joueurBds[1]; ++i)
           for (int j = croupierBds[0]; j <= croupierBds[1]; ++j)
             {
-              if (!reecrire && m[i][j] != MatriceEntree.NAN)
-                throw new RuntimeException ("Cell already filled in!");
-              else if (reecrire && m[i][j] == MatriceEntree.NAN)
-                throw new RuntimeException ("Overwriting still empty cell!");
+              if (!ecraser && m[i][j] != MatriceEntree.NAN)
+                throw new RuntimeException ("Cellule déjà remplie!");
+              else if (ecraser && m[i][j] == MatriceEntree.NAN)
+                throw new RuntimeException ("Ecrase une cellule vide!");
               m[i][j] = valeur;
             }
 
-        /* nextText advances to END_TAG already!  */
+        /* nextText déjà avancer à END_TAG */
         if (p.getEventType () != XmlPullParser.END_TAG)
-          throw new RuntimeException("Expected group end tag!");
+          throw new RuntimeException("Attendu, fin de  group tag!");
       }
   }
 
   /**
-   * Parse bounds in the form given in the XML file.  Can be either a single
-   * number, or of the form A-B.  Returned is a 2 element array with lower
-   * and upper bound.
-   * @param str String representation.
-   * @return Bounds as 2 element array [lower, upper].
-   * @throws RuntimeException If format is wrong.
+   * Parse des Liens du fichier XML.
+   * Peut être un chiffre seul ou sous la forme A-B.
+   * Un tableau à 2 éléments est retourné avec les extrémités des liens
+   * @param str representation en string.
+   * @return Liens sous la forme d'un tableau [inf, sup].
+   * @throws RuntimeException si le format est faux.
    */
   private static int[] analyserLiens(String str)
   {
     StringBuffer avant = new StringBuffer ();
     StringBuffer apres = new StringBuffer ();
-    boolean seenDash = false;
+    boolean tiret = false;
 
     for (int i = 0; i < str.length (); ++i)
       {
         final char c = str.charAt (i);
         if (c == '-')
           {
-            if (seenDash)
-              throw new RuntimeException ("Found two dashes in bounds!");
-            seenDash = true;
+            if (tiret)
+              throw new RuntimeException ("2 tirets dans les liens!");
+            tiret = true;
           }
         else if (c >= '0' && c <= '9')
           {
-            if (seenDash)
+            if (tiret)
               apres.append (c);
             else
               avant.append (c);
           }
         else
-          throw new RuntimeException ("Invalid bounds string: " + str);
+          throw new RuntimeException ("string lien invalide: " + str);
       }
 
     if (avant.length () == 0)
-      throw new RuntimeException ("No from index given in bounds!");
-    if (seenDash && apres.length () == 0)
-      throw new RuntimeException ("Dash but no to index given in bounds!");
+      throw new RuntimeException ("Pas d'index from dans les liens!");
+    if (tiret && apres.length () == 0)
+      throw new RuntimeException ("Tiret masi pas d'index to dans les liens!");
 
     int[] res = new int[2];
     res[0] = Integer.parseInt(avant.toString ());
-    if (seenDash)
+    if (tiret)
       res[1] = Integer.parseInt(apres.toString ());
     else
       res[1] = res[0];
