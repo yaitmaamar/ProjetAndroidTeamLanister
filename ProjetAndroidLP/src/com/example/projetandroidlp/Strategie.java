@@ -14,9 +14,9 @@ public class Strategie
 {
 
   /** Namespace pour le fichier xml de strategie.  */
-  private static final String NS
+  /*private static final String NS
     = "http://www.domob.eu/projects/bjtrainer/strategy/";
-
+*/
   /**
    * Décisions possibles
    * @see Decision
@@ -88,7 +88,7 @@ public class Strategie
    * @return Décision de jeu selon la stratégie.
    * @throws RuntimeException si la stratéfie n'a pas d'entrée.
    */
-  public Decision decider (Jeux j)
+  /*public Decision decider (Jeux j)
   {
     final LaMain joueur = j.getJoueurMain();
     final LaMain croupier = j.getCroupierMain();
@@ -137,9 +137,9 @@ public class Strategie
           assert (false);
       }
 
-    /*   */
+
     return Decision.PASSER;
-  }
+  }*/
 
   /**
    * Remplie les matrices en parsant le fichier xml
@@ -147,7 +147,7 @@ public class Strategie
    * @param ecraser pour seulement changer les entrées données en les écrasant
    * @throws RuntimeException si erreur de parsing
    */
-  public void remplir(XmlPullParser p, boolean ecraser)
+  /*public void remplir(XmlPullParser p, boolean ecraser)
   {
     try
       {
@@ -191,7 +191,7 @@ public class Strategie
 
     if (!remplie ())
       throw new RuntimeException ("La matrice n'a pas été complétement remplie par le XML!");
-  }
+  }*/
 
   /**
    * Retourne les stratégies. Utilisé pour afficher les stratégies
@@ -273,12 +273,12 @@ public class Strategie
    * @return True si c'est l'élément.
    * @throws RuntimeException si le namespace n'est pas le bon.
    */
-  private static boolean verifieTag(XmlPullParser p, String elem)
+  /*private static boolean verifieTag(XmlPullParser p, String elem)
   {
     if (!p.getNamespace().equals (NS))
       throw new RuntimeException ("Mauvais namespace pour la stratégie XML!");
     return p.getName().equals (elem);
-  }
+  }*/
 
   /**
    * Parse les parties d'une matrice
@@ -289,7 +289,7 @@ public class Strategie
    * @throws XmlPullParserException si le parser throw une exception;
    * @throws IOException si la lecture du xml échoue.
    */
-  private static void analyserMatrice(XmlPullParser p, EntreeMatrice[][] m, boolean ecraser)
+ /* private static void analyserMatrice(XmlPullParser p, EntreeMatrice[][] m, boolean ecraser)
     throws XmlPullParserException, IOException
   {
     while (true)
@@ -335,10 +335,10 @@ public class Strategie
             }
 
         /* nextText déjà avancer à END_TAG */
-        if (p.getEventType () != XmlPullParser.END_TAG)
+       /* if (p.getEventType () != XmlPullParser.END_TAG)
           throw new RuntimeException("Attendu, fin de  group tag!");
       }
-  }
+  }*/
 
   /**
    * Parse des Liens du fichier XML.

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-  <string name="app_name">BlackJack IUT</string>
+  <string name="app_name">blackJack</string>
   <string name="app_version">0.1</string>
 
   <string name="perdu">Perdu</string>
 
   <string name="btnTirer">Tirer</string>
-  <string name="btnPasser">Passer</string>
+  <string name="btnPasser">Pass</string>
   <string name="btnDouble">Doubler</string>
-  <string name="btnSepare">Separer</string>
+  <string name="btnSepare">Split</string>
 
   <string name="joueur_choix">Votre tour</string>
   <string name="joueur_blackjack">BlackJack, Vous avez gagné!</string>

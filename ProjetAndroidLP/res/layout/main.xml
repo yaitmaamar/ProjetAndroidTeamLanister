@@ -8,7 +8,7 @@
     android:layout_height="fill_parent"
 	android:background="@drawable/icone"
     android:gravity="center_horizontal">
-    >
+    
   <SurfaceView android:id="@+id/croupier_cartes"
       android:layout_width="fill_parent"
       android:layout_height="0dp"
@@ -40,25 +40,25 @@
       android:layout_width="fill_parent"
       android:layout_height="wrap_content">
 
-    <bouton android:id="@+id/tirer_bouton"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/tirer_bouton"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
         android:text="@string/btnTirer" />
 
-    <bouton android:id="@+id/passer_bouton"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/passer_bouton"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:layout_weight="1"
         android:text="@string/btnPasser" />
 
-    <bouton android:id="@+id/double_bouton"
+    <Button android:id="@+id/double_bouton"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"
         android:text="@string/btnDouble" />
 
-    <bouton android:id="@+id/separe_bouton"
+    <Button android:id="@+id/separe_bouton"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"

@@ -250,21 +250,21 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         return;
       }
 
-    final Strategie.Decision dec = optimale.decider(jeuCourant);
+    //final Strategie.Decision dec = optimale.decider(jeuCourant);
 
     assert (jeuCourant.estEnAttente ());
     if (v == btnTirer)
       {
-        if (dec != Strategie.Decision.TIRER)
+        /*if (dec != Strategie.Decision.TIRER)
           alertStrategie (dec);
-        else
+        else*/
           jeuCourant.Tirer();
       }
     if (v == btnPasser)
       {
-        if (dec != Strategie.Decision.PASSER)
+        /*if (dec != Strategie.Decision.PASSER)
           alertStrategie(dec);
-        else
+        else*/
           jeuCourant.Passer();
       }
     if (v == btnDOUBLER)
@@ -276,8 +276,8 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
           }
-        else if (dec != Strategie.Decision.DOUBLER)
-          alertStrategie (dec);
+        /*else if (dec != Strategie.Decision.DOUBLER)
+          alertStrategie (dec);*/
         else
           jeuCourant.CoupDouble();
       }
@@ -290,8 +290,8 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
           }
-        else if (dec != Strategie.Decision.SEPARER)
-          alertStrategie (dec);
+        /*else if (dec != Strategie.Decision.SEPARER)
+          alertStrategie (dec);*/
         else
           {
             Jeux Separe = jeuCourant.CoupSepare(true);
@@ -457,7 +457,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   private void majAll ()
   {
     maj();
-    if (optimale == null || (jeuCourant.Soft17 != h17Strategie))
+    /*if (optimale == null || (jeuCourant.Soft17 != h17Strategie))
       {
         optimale = new Strategie ();
         optimale.remplir (getResources ().getXml (R.xml.strategie_passer17), false);
@@ -465,7 +465,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           optimale.remplir (getResources ().getXml (R.xml.strategie_h17), true);
 
         h17Strategie = jeuCourant.Soft17;
-      }
+      }*/
   }
 
   /**
