@@ -22,7 +22,7 @@
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />
 
-  <TextView android:id="@+id/aide_link"
+  <TextView android:id="@+id/aide_lien"
       android:text="@string/aide_para4"
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />

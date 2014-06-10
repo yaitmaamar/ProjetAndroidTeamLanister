@@ -113,7 +113,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     afficheCroupier = new AffichageDeLaMain (this, img, v);
 
     allLayout = findViewById (R.id.all_layout);
-    message = (TextView) findViewById (R.id.jeu_message);
+    message = (TextView) findViewById (R.id.jeux_message);
     montant = (TextView) findViewById (R.id.total_affichage);
 
     btnTirer = (Button) findViewById (R.id.tirer_bouton);
@@ -271,7 +271,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
       {
         if (!jeuCourant.peutDouble ())
           {
-            Toast t = Toast.makeText (this, getString (R.string.peuDouble),
+            Toast t = Toast.makeText (this, getString (R.string.peudouble),
                                       Toast.LENGTH_SHORT);
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
