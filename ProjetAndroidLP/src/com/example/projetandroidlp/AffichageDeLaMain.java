@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 import java.util.List;
 
 /**
- * Affiche un ensemble de cartes sur une surface, et fait une mise à l'échelle.
+ * Affiche un ensemble de cartes sur une surface, et fait une mise à l'échelle. 
  */
 public class AffichageDeLaMain implements SurfaceHolder.Callback
 {
