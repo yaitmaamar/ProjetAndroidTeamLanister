@@ -70,7 +70,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   /** boutton Passer.  */
   private Button btnPasser;
   /** boutton DOUBLERr.  */
-  private Button btnDOUBLERr;
+  private Button btnDOUBLER;
   /** boutton Separer.  */
   private Button btnSeparer;
 
@@ -126,13 +126,13 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
     btnTirer = (Button) findViewById (R.id.tirer_bouton);
     btnPasser = (Button) findViewById (R.id.passer_bouton);
-    btnDOUBLERr = (Button) findViewById (R.id.double_bouton);
+    btnDOUBLER = (Button) findViewById (R.id.double_bouton);
     btnSeparer = (Button) findViewById (R.id.separe_bouton);
 
     allLayout.setOnClickListener (this);
     btnTirer.setOnClickListener (this);
     btnPasser.setOnClickListener (this);
-    btnDOUBLERr.setOnClickListener (this);
+    btnDOUBLER.setOnClickListener (this);
     btnSeparer.setOnClickListener (this);
 
     optimale = null;
@@ -275,7 +275,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         else
           jeuCourant.Passer();
       }
-    if (v == btnDOUBLERr)
+    if (v == btnDOUBLER)
       {
         if (!jeuCourant.peutDOUBLER ())
           {
