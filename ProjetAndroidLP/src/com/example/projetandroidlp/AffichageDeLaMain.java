@@ -1,13 +1,14 @@
 package com.example.projetandroidlp;
 
 import android.content.Context;
-
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-
 import android.util.Log;
-
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -38,6 +39,8 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
   private int largeur;
   /** Height de la surface.  */
   private int hauteur;
+  
+  private Resources res;
 
   /**
    * Constructeur, utilisant une SurfaceView donnée.
@@ -112,7 +115,10 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     Log.v (TAG, String.format ("Surface: %d x %d", largeur, hauteur));
 
     final Canvas ecran = conteneur.lockCanvas ();
-    ecran.drawARGB(0xFF, 0x00, 0x00, 0x00);
+    ecran.drawARGB(0xFF, 0x3C, 0x6E, 0x23);
+    Paint test = new Paint();
+    ecran.drawCircle(0, 180,45, test);
+    //ecran.drawBitmap(BitmapFactory.decodeResource(res, R.drawable.fond), 0, 0, null); // draw the background
 
     /* Calcul de la largeur et hauteur non mises à l'échelle de toutes les cartes mises ensemble */
     int carteL = imgs.getLargeur();
@@ -183,6 +189,8 @@ public void surfaceCreated (SurfaceHolder c)
 {
 	conteneur = c;
 }
+
+
 
 @Override
 public void surfaceChanged(SurfaceHolder holder, int format, int width,

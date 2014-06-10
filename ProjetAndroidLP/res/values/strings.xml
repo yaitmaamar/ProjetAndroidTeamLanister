@@ -14,10 +14,10 @@
   <string name="joueur_choix">Votre tour</string>
   <string name="joueur_blackjack">BlackJack, Vous avez gagné!</string>
   <string name="joueur_perdu">Vous avez perdu.</string>
-  <string name="joueur_gagne" formatted="false">Vous avez gagné %d avec %d.</string>
+  <string name="joueur_gagne" formatted="false">Vous avez gagné avec %d contre %d.</string>
   <string name="croupier_blackjack">La banque a fait un BlackJack, vous avez perdu.</string>
   <string name="croupier_perdu">La banque a perdu.</string>
-  <string name="croupier_gagne" formatted="false">Vous avez perdu %d avec %d.</string>
+  <string name="croupier_gagne" formatted="false">Vous avez perdu avec %d contre %d.</string>
   <string name="egalite" formatted="false">Égalité avec %d.</string>
 
   <string name="total_template">Total: %.1f</string>
