@@ -33,7 +33,7 @@ public class CarteImages
     Log.d (TAG, String.format ("Images des cartes:"));
     Log.d (TAG, String.format ("  largeur:  %d", getLargeur()));
     Log.d (TAG, String.format ("  hauteur: %d", getHauteur()));
-    Log.d (TAG, String.format ("  decalage:  %d", getDecalageMinimum()));
+    Log.d (TAG, String.format ("  decalage:  %d", getDeplacementMinimum()));
   }
 
   /**
