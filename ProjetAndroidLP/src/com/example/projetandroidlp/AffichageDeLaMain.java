@@ -107,8 +107,8 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     if (conteneur == null || mainActuelle == null)
       return;
 
-    final List<Carte> cartes = mainActuelle.getCartes();
-    Log.v (TAG, String.format ("Affichage de %d cartes.", cartes.taille() ));
+    final List<Carte> cartes = mainActuelle.getCards();
+    Log.v (TAG, String.format ("Affichage de %d cartes.", cartes.size() ));
     Log.v (TAG, String.format ("Surface: %d x %d", largeur, hauteur));
 
     final Canvas ecran = conteneur.lockCanvas ();
@@ -119,7 +119,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     int carteH = imgs.getHauteur();
     int carteDeplacement = imgs.getDeplacementMinimum();
     int totalH = carteH;
-    int totalL = carteL + carteDecalage * (cartes.taille() - 1);
+    int totalL = carteL + carteDeplacement * (cartes.size() - 1);
 
     Log.v (TAG, "Avant mise à l'échelle :");
     Log.v (TAG, String.format ("  carte: %d x %d, déplacement %d", carteL, carteH, carteDeplacement));
@@ -128,7 +128,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     /* Scale those to fit bounds.  */
     final float facteurL = largeur / (float) totalL;
     final float facteurH = hauteur / (float) totalH;
-    final float facteur = Math.min (facteurW, facteurH);
+    final float facteur = Math.min (facteurL, facteurH);
     carteL = Math.round (carteL * facteur);
     carteH = Math.round (carteH * facteur);
     carteDeplacement = Math.round (carteDeplacement * facteur);
@@ -150,7 +150,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     for (final Carte c : cartes)
       {
         final Drawable d = imgs.getCarte (c);
-        final int gauche = x + cardDeplacement * num;
+        final int gauche = x + carteDeplacement * num;
         final int haut = y;
         final int droite = gauche + carteL;
         final int bas = haut + carteH;
@@ -162,7 +162,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     /* Si la main est perdante, affiche un message par dessus. */
     if (mainActuelle.estPerdante())
       {
-        final String text = context.getString (R.string.perdu);
+        final String text = contexte.getString (R.string.perdu);
         Paint p = new Paint();
         p.setTextAlign(Paint.Align.CENTER);
         p.setColor(0xFFFF0000);
@@ -177,5 +177,28 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
 
     conteneur.unlockCanvasAndPost(ecran);
   }
+
+@Override
+public void surfaceCreated (SurfaceHolder c)
+{
+	conteneur = c;
+}
+
+@Override
+public void surfaceChanged(SurfaceHolder holder, int format, int width,
+		int height) {
+	 	conteneur = holder;
+	    largeur = width;
+	    hauteur = height;
+	    maj ();
+	
+}
+
+@Override
+public void surfaceDestroyed(SurfaceHolder holder) {
+	conteneur= null;
+		
+	
+}
 
 }
