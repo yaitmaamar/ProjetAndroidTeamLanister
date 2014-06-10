@@ -3,25 +3,18 @@ package com.example.projetandroidlp;
 
 import android.app.Activity;
 import android.app.Dialog;
-
 import android.content.SharedPreferences;
 import android.content.Intent;
-
 import android.os.Bundle;
-
 import android.preference.PreferenceManager;
-
 import android.text.method.LinkMovementMethod;
-
 import android.util.Log;
-
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SurfaceView;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,7 +29,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
 import java.util.ArrayList;
 
 /**
@@ -277,7 +269,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
       }
     if (v == btnDOUBLER)
       {
-        if (!jeuCourant.peutDOUBLER ())
+        if (!jeuCourant.peutDouble ())
           {
             Toast t = Toast.makeText (this, getString (R.string.peuDouble),
                                       Toast.LENGTH_SHORT);
@@ -298,7 +290,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             t.setGravity (Gravity.CENTER, 0, 0);
             t.show ();
           }
-        else if (dec != Strategie.Decision.Separe)
+        else if (dec != Strategie.Decision.SEPARER)
           alertStrategie (dec);
         else
           {
@@ -336,10 +328,10 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           startActivity (new Intent (this, DisplayStrategie.class));
           return true;
 		*/
-        case R.id.preferences:
+        /*case R.id.preferences:
           startActivity (new Intent (this, Preferences.class));
           return true;
-
+		*/
         /*case R.id.reset_trainer:
           deleteFile ("trainer");
           Log.d (TAG, "Deleted trainer data on local storage.");
@@ -445,11 +437,11 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         else
           {
             LaMain joueur = new LaMain ();
-            joueur.add (deck.getNouvelleCarte ());
-            joueur.add (deck.getNouvelleCarte ());
+            joueur.ajouter (deck.getNouvelleCarte ());
+            joueur.ajouter(deck.getNouvelleCarte ());
 
             LaMain croupier = new LaMain ();
-            croupier.add (deck.getNouvelleCarte ());
+            croupier.ajouter(deck.getNouvelleCarte ());
 
             jeuCourant = new Jeux (joueur, croupier, deck, h17);
           }
@@ -465,10 +457,10 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   private void majAll ()
   {
     maj();
-    if (optimale == null || (jeuCourant.TIRERSoft17 != h17Strategie))
+    if (optimale == null || (jeuCourant.Soft17 != h17Strategie))
       {
         optimale = new Strategie ();
-        optimale.fill (getResources ().getXml (R.xml.strategie_passer17), false);
+        optimale.remplir (getResources ().getXml (R.xml.strategie_passer17), false);
         if (jeuCourant.Soft17)
           optimale.remplir (getResources ().getXml (R.xml.strategie_h17), true);
 
@@ -553,13 +545,13 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         case DOUBLER:
           msg = getString (R.string.btnDouble);
           break;
-        case Separe:
-          msg = getString (R.string.btnSeparer);
+        case SEPARER:
+          msg = getString (R.string.btnSepare);
           break;
         default:
           assert (false);
       }
-    msg = String.format (getString (R.string.suboptimale_decision), msg);
+    msg = String.format (getString (R.string.suboptimal_decision), msg);
 
     Toast t = Toast.makeText (this, msg, Toast.LENGTH_SHORT);
     t.setGravity (Gravity.CENTER, 0, 0);
