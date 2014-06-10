@@ -1,4 +1,3 @@
-
 package com.example.projetandroidlp;
 
 public final class R {
@@ -140,7 +139,7 @@ public final class R {
         public static final int suboptimal_decision=0x7f050013;
         public static final int total_template=0x7f05000f;
         /*public static final int train_pref=0x7f050019;
-        public static final int train_summary=0x7f05001a;*/
+public static final int train_summary=0x7f05001a;*/
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

@@ -39,7 +39,7 @@ public class Jeux implements Serializable
   private LaMain Croupier;
 
   /** deck de pioche */
-  private transient PiocheAleatoire Deck;
+  private transient Pioche Deck;
 
   /** Si on a déjà calculé l'état du jeu  */
   private boolean Calcul;
@@ -65,7 +65,7 @@ public class Jeux implements Serializable
    * @param h17 Croupier fait un soft 17?
    * 
    */
-  public Jeux(LaMain p, LaMain d, PiocheAleatoire s, boolean h17)
+  public Jeux(LaMain p, LaMain d, Pioche s, boolean h17)
   {
     Joueur = p;
     Croupier = d;
@@ -246,7 +246,7 @@ public class Jeux implements Serializable
    * Pour set après la serialization car le Deck est de type transient
    * @param d le nouveau Deck.
    */
-  public void setPiocheCarte(PiocheCarte d)
+  public void setPiocheCarte(Pioche d)
   {
     Deck = d;
   }
@@ -263,7 +263,7 @@ public class Jeux implements Serializable
       {
         Attente = false;
         Resultat = Fin.EGALITE;
-        Joueur = 0.0f;
+        payer = 0.0f;
       }
     else if (Joueur.getTotal () > 21)
       {

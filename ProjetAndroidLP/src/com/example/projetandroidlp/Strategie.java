@@ -77,9 +77,9 @@ public class Strategie
     soft = new EntreeMatrice[22][12];
     pair = new EntreeMatrice[12][12];
 
-    nanMatrix (hard);
-    nanMatrix (soft);
-    nanMatrix (pair);
+    nanMatrice (hard);
+    nanMatrice (soft);
+    nanMatrice (pair);
   }
 
   /**
@@ -88,7 +88,7 @@ public class Strategie
    * @return Décision de jeu selon la stratégie.
    * @throws RuntimeException si la stratéfie n'a pas d'entrée.
    */
-  public Decision decider (Jeu j)
+  public Decision decider (Jeux j)
   {
     final LaMain joueur = j.getJoueurMain();
     final LaMain croupier = j.getCroupierMain();
@@ -98,7 +98,7 @@ public class Strategie
     if (joueur.estPaire())
       {
         final byte valeurPaire = joueur.getValeurePaire();
-        entree = paire[valeurPaire][croupierTotal];
+        entree = pair[valeurPaire][croupierTotal];
       }
     else
       {
@@ -125,12 +125,12 @@ public class Strategie
 
         case DOUBLER_TIRER:
           if (joueur.peutDouble ())
-            return Decision.DOUBLE;
+            return Decision.DOUBLER;
           return Decision.TIRER;
 
         case DOUBLER_PASSER:
           if (joueur.peutDouble ())
-            return Decision.DOUBLE;
+            return Decision.DOUBLER;
           return Decision.PASSER;
 
         default:
@@ -155,21 +155,21 @@ public class Strategie
         if (p.next () != XmlPullParser.START_DOCUMENT)
           throw new RuntimeException ("Attendu, le lancement du document!");
         p.nextTag ();
-        if (!checkTag (p, "strategie"))
+        if (!verifieTag (p, "strategie"))
           throw new RuntimeException ("Attendu, stratégie à la racine!");
 
         p.nextTag ();
-        if (!checkTag (p, "hard"))
+        if (!verifieTag (p, "hard"))
           throw new RuntimeException ("Attendu, hard tag!");
         analyserMatrice(p, hard, ecraser);
 
         p.nextTag ();
-        if (!checkTag (p, "soft"))
+        if (!verifieTag (p, "soft"))
           throw new RuntimeException ("Attendu, soft tag!");
         analyserMatrice(p, soft, ecraser);
 
         p.nextTag ();
-        if (!checkTag (p, "pairs"))
+        if (!verifieTag (p, "pairs"))
           throw new RuntimeException ("Attendu, paire tag!");
         analyserMatrice(p, pair, ecraser);
 
@@ -198,7 +198,7 @@ public class Strategie
    * @param m La matrice recherchée.
    * @return la matrice.
    */
-  public MatriceEntree[][] getMatrice(Matrice m)
+  public EntreeMatrice[][] getMatrice(Matrice m)
   {
     switch(m)
       {
@@ -239,11 +239,11 @@ public class Strategie
    * Remplie les matrices avec des valeurs NAN.
    * @param m la matric à remplir.
    */
-  private static void nanMatrice(MatriceEntree[][] m)
+  private static void nanMatrice(EntreeMatrice[][] m)
   {
     for (int i = 0; i < m.length; ++i)
       for (int j = 0; j < m[i].length; ++j)
-        m[i][j] = MatriceEntree.NAN;
+        m[i][j] = EntreeMatrice.NAN;
   }
 
   /**
@@ -253,11 +253,11 @@ public class Strategie
    * @param to regarde sur cet index du joueur.
    * @return True si différent de NAN.
    */
-  private static boolean remplie(MatriceEntree[][] m, int from, int to)
+  private static boolean remplie(EntreeMatrice[][] m, int from, int to)
   {
     for (int i = from; i <= to; ++i)
       for (int j = 2; j <= 11; ++j)
-        if (m[i][j] == MatriceEntree.NAN)
+        if (m[i][j] == EntreeMatrice.NAN)
           {
           android.util.Log.d ("", i + " " + j);
           return false;
@@ -289,7 +289,7 @@ public class Strategie
    * @throws XmlPullParserException si le parser throw une exception;
    * @throws IOException si la lecture du xml échoue.
    */
-  private static void analyserMatrice(XmlPullParser p, MatriceEntree[][] m, boolean ecraser)
+  private static void analyserMatrice(XmlPullParser p, EntreeMatrice[][] m, boolean ecraser)
     throws XmlPullParserException, IOException
   {
     while (true)
@@ -310,26 +310,26 @@ public class Strategie
         final int[] croupierBds = analyserLiens(croupier);
 
         final String action = p.nextText();
-        MatriceEntree valeur;
+        EntreeMatrice valeur;
         if (action.equals ("H"))
-          value = MatriceEntree.TIRER;
+        	valeur = EntreeMatrice.TIRER;
         else if (action.equals ("S"))
-          value = MatriceEntree.PASSER;
+        	valeur = EntreeMatrice.PASSER;
         else if (action.equals ("SP"))
-          value = MatriceEntree.SEPARER;
+        	valeur = EntreeMatrice.SEPARER;
         else if (action.equals ("Dh"))
-          value = MatriceEntree.DOUBLER_TIRER;
+        	valeur = EntreeMatrice.DOUBLER_TIRER;
         else if (action.equals ("Ds"))
-          value = MatriceEntree.DOUBLER_PASSER;
+        	valeur = EntreeMatrice.DOUBLER_PASSER;
         else
           throw new RuntimeException ("Invalid action: " + action);
 
         for (int i = joueurBds[0]; i <= joueurBds[1]; ++i)
           for (int j = croupierBds[0]; j <= croupierBds[1]; ++j)
             {
-              if (!ecraser && m[i][j] != MatriceEntree.NAN)
+              if (!ecraser && m[i][j] != EntreeMatrice.NAN)
                 throw new RuntimeException ("Cellule déjà remplie!");
-              else if (ecraser && m[i][j] == MatriceEntree.NAN)
+              else if (ecraser && m[i][j] == EntreeMatrice.NAN)
                 throw new RuntimeException ("Ecrase une cellule vide!");
               m[i][j] = valeur;
             }
