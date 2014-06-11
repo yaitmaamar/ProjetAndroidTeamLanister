@@ -84,8 +84,8 @@ public class Jeux implements Serializable
    */
   public void Tirer()
   {
-    if (!Attente)
-      throw new RuntimeException ("Le jeu est fini!");
+    //if (!Attente)
+      //throw new RuntimeException ("Le jeu est fini!");
 
     Joueur.ajouter(Deck.getNouvelleCarte());
     Calculer();
@@ -114,13 +114,13 @@ public class Jeux implements Serializable
   */
   public void CoupDouble()
   {
-    if (!Joueur.peutDouble())
-      throw new RuntimeException ("Le joueur ne peut pas faire un coup double");
+    //if (!Joueur.peutDouble())
+    //  throw new RuntimeException ("Le joueur ne peut pas faire un coup double "+Joueur.getCards().size());
     //assert (!Double);
     Double = true;
 
     Tirer();
-    CoupDouble();
+    Passer();
   }
 
   /**
