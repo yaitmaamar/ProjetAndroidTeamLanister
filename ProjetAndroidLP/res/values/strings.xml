@@ -1,90 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-  <string name="app_name">blackJack</string>
-  <string name="app_version">0.1</string>
-
-  <string name="gagne">Gagné</string>
-  <string name="perdu">Perdu</string>
-
-  <string name="btnTirer">Tirer</string>
-  <string name="btnPasser">Passer</string>
-  <string name="btnDouble">Doubler</string>
-  <string name="btnSepare">Separer</string>
-
-  <string name="joueur_choix">Votre tour</string>
-  <string name="joueur_blackjack">BlackJack, Vous avez gagné!</string>
-  <string name="joueur_perdu">Vous avez perdu.</string>
-  <string name="joueur_gagne" formatted="false">Vous avez gagné avec %d contre %d.</string>
-  <string name="croupier_blackjack">La banque a fait un BlackJack, vous avez perdu.</string>
-  <string name="croupier_perdu">La banque a perdu.</string>
-  <string name="croupier_gagne" formatted="false">Vous avez perdu avec %d contre %d.</string>
-  <string name="egalite" formatted="false">Égalité avec %d.</string>
-
-  <string name="total_template">Total: %.1f</string>
-  <string name="remaining_template">%d reste.</string>
-
-  <string name="peudouble">Vous n etes pas autorisé doubler!</string>
-  <string name="peusepare">Vous n etes pas autorisé à faire un split!</string>
-  <string name="separation">Votre tas a été séparé en deux.</string>
-  <!-- <string name="suboptimal_decision">Your choice is not optimal.  Better: %s</string>
-  <string name="finished_learning">You finished learning.</string>-->
-  <!-- <string name="deleted_trainer">Trainer data was reset.</string>
- -->
-  <!-- <string name="category_trainer">Strategy Trainer</string> -->
- <!--  <string name="h17_pref">Hit Soft 17</string>
-  <string name="h17_summary">Should the croupier hit soft 17 rather than standing?</string>
-  <string name="train_pref">Train Strategy</string>
-  <string name="train_summary">Systematically train the full strategy instead of random cards?</string> -->
-
-  <string name="affiche_strategie">afficher strategie</string>
-  <string name="preferences">Preferences</string>
-<!--   <string name="reset_trainer">Reset Trainer</string>
- -->  <string name="aide">Aide</string>
-  <string name="a_propos">A propos</string>
-
-  <string name="html_h17">croupier hits soft 17.</string>
-  <string name="html_noH17">croupier stands on soft 17.</string>
-  <string name="html_joueur_hand">joueur hand</string>
-  <string name="html_croupier_carte">croupier\'s card</string>
-  <string name="html_hard">Hard totals</string>
-  <string name="html_soft">Soft totals</string>
-  <string name="html_pairs">Pairs</string>
-
-  <string name="aide_title">Quick Guide</string>
-  <string name="aide_para1">The screen displays your cards (at the bottom)
-and the croupier\'s visible card (on top).  Play simply by choosing your
-turn with the buttons below.  When the game is finished, touch anywhere
-to start a new one.</string>
-  <string name="aide_para2">In systematic training mode, all possible
-initial situations are presented and repeated until your decision was correct
-at the first attempt.</string>
-  <string name="aide_para3">Since the focus is on training BlackJack,
-also invalid choices (double / split in some situations) are presented,
-and you are only afterwards notified if something is not allowed.  In addition,
-you are notified a_propos the optimal choice in the current situation if you
-try to do something else.</string>
-  <string name="aide_para4">See also the
-<a href="http://www.domob.eu/projects/bjtrainer.php">webpage</a> for more
-details.</string>
-
-  <string name="a_propos_title">a_propos and Copyright</string>
-  <string name="a_propos_version">This is <b>%s</b> version <b>%s</b>.</string>
-  <string name="a_propos_para1">Copyright (C) 2012 by Daniel Kraft.
-Feel free to send me any comments or suggestions via
-<a href="mailto:d@domob.eu">email</a> or visit
-<a href="http://www.domob.eu/projects/bjtrainer.php">BlackJack-Trainer\'s
-webpage</a>.</string>
-  <string name="a_propos_para2">This program is free software: you can
-    redistribute it and/or modify
-    it under the terms of the
-    <a href="https://www.gnu.org/copyleft/gpl.html">GNU General
-    Public License</a> as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.</string>
-  <string name="a_propos_para3">This program is distributed in the hope that it
-    will be useful,
-    but <i>without any warranty</i>; without even the implied warranty of
-    <i>merchantability</i> or <i>fitness for a particular purpose</i>.  See the
-    GNU General Public License for more details.</string>
+	<string name="app_name">blackJack</string>
+	<string name="app_version">0.1</string>
+	
+	<string name="gagne">Gagné</string>
+	<string name="perdu">Perdu</string>
+	
+	<string name="btnTirer">Tirer</string>
+	<string name="btnPasser">Passer</string>
+	<string name="btnDouble">Doubler</string>
+	<string name="btnSepare">Séparer</string>
+	
+	<string name="joueur_choix">Votre tour</string>
+	<string name="joueur_blackjack">BlackJack, vous avez gagné!</string>
+	<string name="joueur_perdu">Vous avez perdu.</string>
+	<string name="joueur_gagne" formatted="false">Vous avez gagné avec %d contre %d.</string>
+	<string name="croupier_blackjack">La banque a fait un BlackJack, vous avez perdu.</string>
+	<string name="croupier_perdu">La banque a perdu.</string>
+	<string name="croupier_gagne" formatted="false">Vous avez perdu avec %d contre %d.</string>
+	<string name="egalite" formatted="false">Égalité avec %d.</string>
+	
+	<string name="total_template">Gain : %.1f $</string>
+	<string name="remaining_template">%d passe.</string>
+	
+	<string name="peudouble">Vous n\'êtes pas autorisé à doubler !</string>
+	<string name="peusepare">Vous n\'êtes pas autorisé à séparer vos cartes !</string>
+	<string name="separation">Votre tas a été séparé en deux.</string>
+	
+	<string name="affiche_strategie">Afficher stratégie</string>
+	<string name="preferences">Préférences</string>
+	<string name="aide">Aide</string>
+	<string name="a_propos">A propos</string>
+	
+	<string name="html_h17">le croupier atteint un 17 souple.</string>
+	<string name="html_noH17">le croupier passe sur 17 souple.</string>
+	<string name="html_joueur_hand">main du joueur</string>
+	<string name="html_croupier_carte">cartes du croupier</string>
+	<string name="html_hard">Total dur</string>
+	<string name="html_soft">Total souple</string>
+	<string name="html_pairs">Paires</string>
+	
+	<string name="aide_title">Comment jouer ?</string>
+	<string name="aide_para1">La partie oppose le joueur contre la banque. Le but est de battre le croupier sans dépasser 21. 
+		Dès qu\'un joueur fait plus que 21, il est déclaré perdant et perd sa mise initiale.</string>
+	<string name="aide_para2">
+		La valeur des cartes est établie comme suit :
+		- de 2 à 10 → valeur nominale de la carte
+		- chaque figure ou "tête" → 10 points
+		- l\'As → 1 ou 11 (au choix)
+	</string>
+	<string name="aide_para3">
+	   	 Les actions possibles sont :
+	   	 - Tirer une carte
+	   	 - Passer
+	   	 - Doubler la mise. Quand vous choisissez cette option vous ne pourrez piocher qu\'une carte et serez obliger de passer ensuite.
+	   	 - Séparer vos carte. Si vous commencez avec une paire, vous pouvez la séparer pour créer 2 nouvelles mains en piochant 2 cartes supplémentaires. 
+	</string>
+	<string name="aide_para4">
+		Sur l\'écran, vous pouvez voir vos cartes (en bas), et celles du croupier (en haut).
+		Pour jouer, choisissez l\'une des actions grâce aux boutons situés en bas de l\'écran.
+		Quand la manche est terminée, appuyez n\'importe où sur l\'écran pour commencer une nouvelle manche.
+	</string>
+	
+	<string name="a_propos_title">a_propos</string>
+	<string name="a_propos_version"><b>%s</b> version <b>%s</b>.</string>
+	<string name="a_propos_para1">
+	    Cette application a été créée par Yacine Ait-Maamar, William Roux, et Quentin Barbosa dans le cadre d\'un projet étudiant pour l\'université d\'Orléans.
+	</string>
+	<string name="a_propos_para2">
+	</string>
+	<string name="a_propos_para3">
+	</string>
 </resources>
