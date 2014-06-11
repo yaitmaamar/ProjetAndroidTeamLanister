@@ -101,7 +101,7 @@ public class LaMain implements Serializable
   /**
    * Effectuer le calcul de valeurs de données.
    */
-  private void calculer ()
+  private void calculer()
   {
     byte as = 0;
     total = 0;
@@ -190,8 +190,8 @@ public class LaMain implements Serializable
   }
 
   /**
-   * Si on peut doublé.
-   * @return True si on peut double.
+   * Si on peut doubler.
+   * @return True si on peut doubler.
    */
   public boolean peutDouble ()
   {

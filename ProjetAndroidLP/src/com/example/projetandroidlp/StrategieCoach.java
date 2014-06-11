@@ -521,6 +521,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     else if (trainer != null)
       extraMsg = String.format (getString (R.string.remaining_template),
                                 trainer.getRemainingCount ());*/
+    extraMsg = String.format (getString (R.string.total_template), total);
     montant.setText (extraMsg);
   }
 
