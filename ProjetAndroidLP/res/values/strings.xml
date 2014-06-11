@@ -40,6 +40,8 @@
 	<string name="html_hard">Total dur</string>
 	<string name="html_soft">Total souple</string>
 	<string name="html_pairs">Paires</string>
+	<string name="reset">Reset</string>
+	
 	
 	<string name="aide_title">Comment jouer ?</string>
 	<string name="aide_para1">La partie oppose le joueur contre la banque. Le but est de battre le croupier sans dépasser 21. 

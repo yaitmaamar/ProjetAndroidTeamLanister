@@ -3,24 +3,13 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <item android:id="@+id/affiche_strategie"
-      android:icon="@android:drawable/ic_menu_view"
-      android:title="@string/affiche_strategie" />
-
-  <item android:id="@+id/preferences"
-      android:icon="@android:drawable/ic_menu_preferences"
-      android:title="@string/preferences" />
-
-  <!-- <item android:id="@+id/reset_trainer"
-      android:icon="@android:drawable/ic_menu_delete"
-      android:title="@string/reset_trainer" /> -->
-
-  <!-- android:icon="@android:drawable/ic_menu_aide" -->
+  <item android:id="@+id/reset"
+      android:title="@string/reset" />
+  
   <item android:id="@+id/aide"
       android:title="@string/aide" />
-
+  
   <item android:id="@+id/a_propos"
-      android:icon="@android:drawable/ic_menu_info_details"
       android:title="@string/a_propos" />
 
 </menu>
