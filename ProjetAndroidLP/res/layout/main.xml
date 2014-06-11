@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-	android:background="@drawable/icone"
     android:gravity="center_horizontal">
     
   <SurfaceView android:id="@+id/croupier_cartes"
