@@ -294,6 +294,10 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           alertStrategie (dec);*/
         else
           {
+        	Toast t = Toast.makeText (this, getString (R.string.separation),
+                    Toast.LENGTH_SHORT);
+        	 t.setGravity (Gravity.CENTER, 0, 0);
+             t.show ();
             Jeux Separe = jeuCourant.CoupSepare(true);
             pileJeux.add (Separe);
           }

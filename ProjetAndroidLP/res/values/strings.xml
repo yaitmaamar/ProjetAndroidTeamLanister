@@ -21,24 +21,15 @@
 	<string name="croupier_gagne" formatted="false">Vous avez perdu avec %d contre %d.</string>
 	<string name="egalite" formatted="false">Égalité avec %d.</string>
 	
-	<string name="total_template">Total: %.1f</string>
+	<string name="total_template">Gain : %.1f $</string>
 	<string name="remaining_template">%d passe.</string>
 	
 	<string name="peudouble">Vous n\'êtes pas autorisé à doubler !</string>
 	<string name="peusepare">Vous n\'êtes pas autorisé à séparer vos cartes !</string>
-	<!-- <string name="suboptimal_decision">Your choice is not optimal.  Better: %s</string>
-	<string name="finished_learning">You finished learning.</string>-->
-	<!-- <string name="deleted_trainer">Trainer data was reset.</string>
-	-->
-	<!-- <string name="category_trainer">Strategy Trainer</string> -->
-	<!--  <string name="h17_pref">Hit Soft 17</string>
-	<string name="h17_summary">Should the croupier hit soft 17 rather than standing?</string>
-	<string name="train_pref">Train Strategy</string>
-	<string name="train_summary">Systematically train the full strategy instead of random cards?</string> -->
+	<string name="separation">Votre tas a été séparé en deux.</string>
 	
 	<string name="affiche_strategie">Afficher stratégie</string>
 	<string name="preferences">Préférences</string>
-	<!--   <string name="reset_trainer">Reset Trainer</string>-->
 	<string name="aide">Aide</string>
 	<string name="a_propos">A propos</string>
 	
@@ -81,5 +72,4 @@
 	</string>
 	<string name="a_propos_para3">
 	</string>
-  
 </resources>
