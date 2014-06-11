@@ -75,7 +75,16 @@
 	<string name="a_propos_para3">
 	</string>
 	
-	<string name="message_confirm_reset">
+	<string name="confirm_reset_titre">
+	    Reset
+	</string>
+	<string name="confirm_reset_message">
 	    Êtes-vous sûr de vouloir recommencer votre partie de zéro ?
+	</string>
+	<string name="confirm_reset_oui">
+	    Oui
+	</string>
+	<string name="confirm_reset_non">
+	    Non
 	</string>
 </resources>

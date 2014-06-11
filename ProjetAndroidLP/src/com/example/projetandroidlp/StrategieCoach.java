@@ -2,7 +2,9 @@
 package com.example.projetandroidlp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.Intent;
 import android.os.Bundle;
@@ -399,14 +401,22 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           break;
           
         case DIALOG_RESET:
-            dlg.setContentView(R.layout.reset);
+        	new AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setTitle(R.string.confirm_reset_titre)
+            .setMessage(R.string.confirm_reset_message)
+            .setPositiveButton(R.string.confirm_reset_oui, new DialogInterface.OnClickListener() {
 
-            tv = (TextView)dlg.findViewById(R.id.reset);
-            
-            tv = (TextView)dlg.findViewById(R.id.message_confirm_reset);
-            tv.setMovementMethod(LinkMovementMethod.getInstance());
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Si l'utilisateur a cliqué sur le bouton Oui, on remet à zéro
+                	jeuCourant.setPayer(0);
+                	majAll();
+                }
 
-            dlg.setTitle(R.string.a_propos_title);
+            })
+            .setNegativeButton(R.string.confirm_reset_non, null)
+            .show();
             break;
 
         default:

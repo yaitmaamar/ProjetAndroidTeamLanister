@@ -187,6 +187,17 @@ public class Jeux implements Serializable
     	throw new RuntimeException ("Le jeu est en cours!");
     return payer;
   }
+  
+  /**
+   * Set payer.
+   * @return nouvelle valeur de payer.
+   * @throws RuntimeException si le jeu est toujours en cours.
+   */
+  public float setPayer( float p )
+  {
+	  payer = p;
+	  return payer;
+  }
 
   /**
    * Get la main du joueur
