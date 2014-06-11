@@ -367,8 +367,8 @@ public class StrategieCoach extends Activity implements View.OnClickListener
    */
   private void maj ()
   {
-    afficheJoueur.setLaMain (jeuCourant.getJoueurMain ());
-    afficheCroupier.setLaMain (jeuCourant.getCroupierMain ());
+    afficheJoueur.setLaMain (jeuCourant.getJoueurMain (),1);
+    afficheCroupier.setLaMain (jeuCourant.getCroupierMain (),2);
 
     String msg = "";
     if (jeuCourant.estEnAttente ())

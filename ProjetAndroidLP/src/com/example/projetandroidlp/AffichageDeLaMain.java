@@ -31,6 +31,9 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
   private int largeur;
   /** Height de la surface.  */
   private int hauteur;
+  
+  /** determine si c'est la main du joueur ou du croupier*/
+  private int j;
 
   /**
    * Constructeur, utilisant une SurfaceView donnée.
@@ -45,16 +48,18 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     vue.getHolder().addCallback(this);
     mainActuelle = null;
     conteneur = null;
+    j=0;
   }
 
   /**
    * Change la main affichée
    * @param h La main à afficher
    */
-  public void setLaMain(LaMain m)
+  public void setLaMain(LaMain m, int paquet)
   {
 	mainActuelle = m;
     maj();
+    j=paquet;
   }
 
 
@@ -78,6 +83,29 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     int carteDeplacement = imgs.getDeplacementMinimum();
     int totalH = carteH;
     int totalL = carteL + carteDeplacement * (cartes.size() - 1);
+    
+    
+    String textB="";
+    
+    if (j==1)
+    {
+    	textB="Joueur";
+    }
+    else if(j==2)
+    {
+    	textB="Banque";
+    }
+    
+    Paint pB = new Paint();
+    pB.setTextAlign(Paint.Align.LEFT);
+    pB.setColor(0xFF000000);
+    pB.setTextSize(carteL * 1 / 2);
+    do
+    	pB.setTextSize (pB.getTextSize () * 1 / 4);
+    while (pB.measureText (textB) > largeur * 1 / 4);
+    ecran.drawText (textB,0, (hauteur + pB.getTextSize ()) / 2, pB);    
+    
+    
 
     /* Scale those to fit bounds.  */
     final float facteurL = largeur / (float) totalL;
@@ -92,6 +120,8 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     /* Trouve la position de départ pour que tout soit centré  */
     final int x = (largeur - totalL) / 2;
     final int y = (hauteur - totalH) / 2;
+    
+   
 
     /* Affiche les cartes une par une */
     int num = 0;
