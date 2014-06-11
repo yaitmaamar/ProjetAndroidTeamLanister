@@ -33,13 +33,13 @@
 	<string name="aide">Aide</string>
 	<string name="a_propos">A propos</string>
 	
-	<string name="html_h17">le croupier atteint un 17 souple.</string>
+<!-- 	<string name="html_h17">le croupier atteint un 17 souple.</string>
 	<string name="html_noH17">le croupier passe sur 17 souple.</string>
 	<string name="html_joueur_hand">main du joueur</string>
 	<string name="html_croupier_carte">cartes du croupier</string>
 	<string name="html_hard">Total dur</string>
 	<string name="html_soft">Total souple</string>
-	<string name="html_pairs">Paires</string>
+	<string name="html_pairs">Paires</string> -->
 	<string name="reset">Reset</string>
 	
 	

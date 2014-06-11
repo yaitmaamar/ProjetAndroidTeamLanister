@@ -131,7 +131,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     btnDOUBLER.setOnClickListener (this);
     btnSeparer.setOnClickListener (this);
 
-    optimale = null;
+    //optimale = null;
     /*trainer = null;*/
     total = 0.0f;
     pileJeux = new ArrayList<Jeux> ();
@@ -431,13 +431,13 @@ public class StrategieCoach extends Activity implements View.OnClickListener
    */
   private void lanceNouveauJeu ()
   {
-    final boolean h17 = pref.getBoolean ("h17", false);
+    final boolean h17 = false;
     if (!pileJeux.isEmpty ())
       jeuCourant = pileJeux.remove (pileJeux.size () - 1);
     else
       {
-        if (pref.getBoolean ("train", false))
-          {/*
+        /*if (pref.getBoolean ("train", false))
+          {
             if (trainer == null)
               {
                 restoreTrainer ();
@@ -446,7 +446,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
             if (mauvaiseReponse)
               trainer.repeat ();
-            mauvaiseReponse = false;
+            mauvaiseReponse = false;*/
 
             /* Do this before getNext(), so that the current index is
                not "lost" if quit before answering it!  */
@@ -464,9 +464,9 @@ public class StrategieCoach extends Activity implements View.OnClickListener
               }
             else
               jeuCourant = next;
-          */}
-        else
-          {
+          }*/
+        /*else
+          {*/
             LaMain joueur = new LaMain ();
             joueur.ajouter (deck.getNouvelleCarte ());
             joueur.ajouter(deck.getNouvelleCarte ());
@@ -475,7 +475,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             croupier.ajouter(deck.getNouvelleCarte ());
 
             jeuCourant = new Jeux (joueur, croupier, deck, h17);
-          }
+          //}
       }
 
     assert (jeuCourant != null);
