@@ -301,13 +301,20 @@ public class Jeux implements Serializable
     	Resultat = Fin.JOUEUR_GAGNE;
         payer = 1.0f;
       }
-    else
+    else if (Joueur.getTotal () < Croupier.getTotal () && Croupier.getTotal() < 22)
+    {
+      /* Attente pas connue */
+      Resultat = Fin.CROUPIER_GAGNE;
+      payer = -1.0f;
+    }
+    else 
       {
-        assert (Joueur.getTotal () < Croupier.getTotal ());
+        assert (Croupier.getTotal() > 21);
         /* Attente pas connue */
-        Resultat = Fin.CROUPIER_GAGNE;
-        payer = -1.0f;
+        Resultat = Fin.CROUPIER_PERDU;
+        payer = 1.0f;
       }
+    
 
     if (Double)
     	payer *= 2.0f;

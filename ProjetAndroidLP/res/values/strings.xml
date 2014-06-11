@@ -4,12 +4,13 @@
   <string name="app_name">blackJack</string>
   <string name="app_version">0.1</string>
 
+  <string name="gagne">Gagné</string>
   <string name="perdu">Perdu</string>
 
   <string name="btnTirer">Tirer</string>
-  <string name="btnPasser">Pass</string>
+  <string name="btnPasser">Passer</string>
   <string name="btnDouble">Doubler</string>
-  <string name="btnSepare">Split</string>
+  <string name="btnSepare">Separer</string>
 
   <string name="joueur_choix">Votre tour</string>
   <string name="joueur_blackjack">BlackJack, Vous avez gagné!</string>
