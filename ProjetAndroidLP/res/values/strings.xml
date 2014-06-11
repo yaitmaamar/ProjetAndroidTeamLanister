@@ -26,6 +26,7 @@
 
   <string name="peudouble">Vous n etes pas autorisé doubler!</string>
   <string name="peusepare">Vous n etes pas autorisé à faire un split!</string>
+  <string name="separation">Votre tas a été séparé en deux.</string>
   <!-- <string name="suboptimal_decision">Your choice is not optimal.  Better: %s</string>
   <string name="finished_learning">You finished learning.</string>-->
   <!-- <string name="deleted_trainer">Trainer data was reset.</string>
