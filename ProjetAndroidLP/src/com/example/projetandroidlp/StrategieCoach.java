@@ -552,7 +552,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         default:
           assert (false);
       }
-    msg = String.format (getString (R.string.suboptimal_decision), msg);
+    //msg = String.format (getString (R.string.suboptimal_decision), msg);
 
     Toast t = Toast.makeText (this, msg, Toast.LENGTH_SHORT);
     t.setGravity (Gravity.CENTER, 0, 0);

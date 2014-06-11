@@ -24,10 +24,10 @@
   <string name="total_template">Total: %.1f</string>
   <string name="remaining_template">%d reste.</string>
 
-  <string name="peudouble">Vous n etes pas autorisé à faire un double!</string>
-  <string name="peusepare">Vous n etes pas autorisé à faire une separation!</string>
-  <string name="suboptimal_decision">Your choice is not optimal.  Better: %s</string>
-  <string name="finished_learning">You finished learning.</string>
+  <string name="peudouble">Vous n etes pas autorisé doubler!</string>
+  <string name="peusepare">Vous n etes pas autorisé à faire un split!</string>
+  <!-- <string name="suboptimal_decision">Your choice is not optimal.  Better: %s</string>
+  <string name="finished_learning">You finished learning.</string>-->
   <!-- <string name="deleted_trainer">Trainer data was reset.</string>
  -->
   <!-- <string name="category_trainer">Strategy Trainer</string> -->

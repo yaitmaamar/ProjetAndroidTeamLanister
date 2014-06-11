@@ -68,38 +68,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     maj();
   }
 
-  /**
-   * La surface est créée
-   * @param c Conteneur à utiliser.
-   */
-  public void surfaceCreee(SurfaceHolder c)
-  {
-	conteneur = c;
-  }
-
-  /**
-   * Surface détruite.
-   * @param c Conteneur à utiliser
-   */
-  public void surfaceDetruite(SurfaceHolder h) // Pourquoi cet argument ????
-  {
-    conteneur = null;
-  }
-
-  /**
-   * Mise à jour de la taille de la surface affichée
-   * @param c conteneur utilisé
-   * @param fmt Nouveau format
-   * @param l Nouvelle largeur
-   * @param h Nouvelle hauteur
-   */
-  public void surfaceChangee(SurfaceHolder c, int fmt, int l, int h) // Pourquoi l'argument fmt ???
-  {
-    conteneur = c;
-    largeur = l;
-    hauteur = h;
-    maj();
-  }
 
   /**
    * Met à jour la main affichée

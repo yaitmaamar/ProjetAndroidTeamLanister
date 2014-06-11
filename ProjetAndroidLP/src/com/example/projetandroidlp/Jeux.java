@@ -114,9 +114,9 @@ public class Jeux implements Serializable
   */
   public void CoupDouble()
   {
-    /*if (!Joueur.peutDouble())
-      throw new RuntimeException ("Le joueur ne peut pas faire un coup double");*/
-    assert (!Double);
+    if (!Joueur.peutDouble())
+      throw new RuntimeException ("Le joueur ne peut pas faire un coup double");
+    //assert (!Double);
     Double = true;
 
     Tirer();
