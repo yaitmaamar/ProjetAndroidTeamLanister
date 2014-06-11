@@ -40,10 +40,12 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   /** Log tag.  */
   private static final String TAG = "BJTrainer/StrategieTrainer";
 
-  /** ID pour les dialog d'aide.  */
+  /** ID pour la boîte de dialogue d'aide.  */
   private static final int DIALOG_AIDE = 0;
-  /** ID pour les dialog à propos.  */
+  /** ID pour la boîte de dialogue à propos.  */
   private static final int DIALOG_A_PROPOS = 1;
+  /** ID pour la boîte de dialogue reset.  */
+  private static final int DIALOG_RESET = 2;
 
   /** Affichage pour la main du joueur.  */
   private AffichageDeLaMain afficheJoueur;
@@ -349,6 +351,10 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         case R.id.aide:
           showDialog (DIALOG_AIDE);
           return true;
+          
+        case R.id.reset:
+            showDialog (DIALOG_RESET);
+            return true;
 
         default:
           return super.onOptionsItemSelected (itm);
@@ -391,6 +397,17 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
           dlg.setTitle (R.string.a_propos_title);
           break;
+          
+        case DIALOG_RESET:
+            dlg.setContentView(R.layout.reset);
+
+            tv = (TextView)dlg.findViewById(R.id.reset);
+            
+            tv = (TextView)dlg.findViewById(R.id.message_confirm_reset);
+            tv.setMovementMethod(LinkMovementMethod.getInstance());
+
+            dlg.setTitle(R.string.a_propos_title);
+            break;
 
         default:
           assert (false);

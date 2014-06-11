@@ -26,7 +26,7 @@
 	
 	<string name="peudouble">Vous n\'êtes pas autorisé à doubler !</string>
 	<string name="peusepare">Vous n\'êtes pas autorisé à séparer vos cartes !</string>
-	<string name="separation">Votre tas a été séparé en deux.</string>
+	<string name="separation">Votre main a été séparée en deux.</string>
 	
 	<string name="affiche_strategie">Afficher stratégie</string>
 	<string name="preferences">Préférences</string>
@@ -73,5 +73,9 @@
 	<string name="a_propos_para2">
 	</string>
 	<string name="a_propos_para3">
+	</string>
+	
+	<string name="message_confirm_reset">
+	    Êtes-vous sûr de vouloir recommencer votre partie de zéro ?
 	</string>
 </resources>
