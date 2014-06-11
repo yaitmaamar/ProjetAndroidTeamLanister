@@ -97,8 +97,8 @@ public class Jeux implements Serializable
    */
   public void Passer()
   {
-    if (!Attente)
-      throw new RuntimeException ("Le jeu est fini!");
+//    if (!Attente)
+//      throw new RuntimeException ("Le jeu est fini!");
 
     /* Le croupier joue */
     while (Croupier.getTotal() < 17 || (Soft17 && Croupier.getTotal () == 17 && Croupier.isSoft()))
@@ -189,13 +189,13 @@ public class Jeux implements Serializable
   }
   
   /**
-   * Set payer.
+   * Reset payer.
    * @return nouvelle valeur de payer.
    * @throws RuntimeException si le jeu est toujours en cours.
    */
-  public float setPayer( float p )
+  public float resetPayer()
   {
-	  payer = p;
+	  payer = 0.0f;
 	  return payer;
   }
 

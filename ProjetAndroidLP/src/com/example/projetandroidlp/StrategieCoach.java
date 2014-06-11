@@ -355,7 +355,23 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           return true;
           
         case R.id.reset:
-            showDialog (DIALOG_RESET);
+        	new AlertDialog.Builder(this)
+	            .setIcon(android.R.drawable.ic_dialog_alert)
+	            .setTitle(R.string.confirm_reset_titre)
+	            .setMessage(R.string.confirm_reset_message)
+	            .setPositiveButton(R.string.confirm_reset_oui, new DialogInterface.OnClickListener()
+	        {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+	            	// Si l'utilisateur a cliqué sur le bouton Oui, on remet à zéro
+	            	lanceNouveauJeu();
+	            	jeuCourant.resetPayer();
+	            	maj();
+	            }
+	
+	        })
+	        .setNegativeButton(R.string.confirm_reset_non, null)
+	        .show();
             return true;
 
         default:
@@ -399,25 +415,6 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
           dlg.setTitle (R.string.a_propos_title);
           break;
-          
-        case DIALOG_RESET:
-        	new AlertDialog.Builder(this)
-            .setIcon(android.R.drawable.ic_dialog_alert)
-            .setTitle(R.string.confirm_reset_titre)
-            .setMessage(R.string.confirm_reset_message)
-            .setPositiveButton(R.string.confirm_reset_oui, new DialogInterface.OnClickListener() {
-
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // Si l'utilisateur a cliqué sur le bouton Oui, on remet à zéro
-                	jeuCourant.setPayer(0);
-                	majAll();
-                }
-
-            })
-            .setNegativeButton(R.string.confirm_reset_non, null)
-            .show();
-            break;
 
         default:
           assert (false);
@@ -475,6 +472,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             croupier.ajouter(deck.getNouvelleCarte ());
 
             jeuCourant = new Jeux (joueur, croupier, deck, h17);
+            jeuCourant.resetPayer();
           //}
       }
 
