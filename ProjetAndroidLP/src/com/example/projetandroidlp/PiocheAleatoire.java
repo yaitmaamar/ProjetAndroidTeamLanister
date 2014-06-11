@@ -27,8 +27,6 @@ public class PiocheAleatoire implements Pioche
   public Carte getNouvelleCarte ()
   {
     final long typeInt = rdm.nextInt (13) + 1;
-    assert (typeInt >= Carte.AS && typeInt <= Carte.ROI);
-
     return new Carte (getCouleurAleatoire (), (byte) typeInt);
   }
 
@@ -54,8 +52,6 @@ public class PiocheAleatoire implements Pioche
         case 3:
         	couleur = Carte.Couleur.TREFLE;
           break;
-        default:
-          assert (false);
       }
 
     return couleur;

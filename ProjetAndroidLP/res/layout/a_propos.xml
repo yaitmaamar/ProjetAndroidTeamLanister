@@ -16,14 +16,4 @@
       android:layout_width="fill_parent"
       android:layout_height="wrap_content" />
 
-  <TextView android:id="@+id/a_propos_lien2"
-      android:text="@string/a_propos_para2"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content" />
-
-  <TextView
-      android:text="@string/a_propos_para3"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content" />
-
 </LinearLayout>

@@ -3,17 +3,12 @@ package com.example.projetandroidlp;
 import android.content.res.Resources;
 
 import android.graphics.drawable.Drawable;
-
-import android.util.Log;
-
 /**
  * Cette classe gère l'accès aux images des cartes. 
  * Elle est conçue pour que ces images puissent être changées facilement.
  */
 public class CarteImages
 {
-  /** Tag pour les logs */
-  private static final String TAG = "CarteImages";
 
   /** L'objet qui stocke les ressources  */
   private Resources res;
@@ -30,10 +25,6 @@ public class CarteImages
     res = r;
     requeteur = getCarte (new Carte (Carte.Couleur.TREFLE, Carte.VALET));
 
-    Log.d (TAG, String.format ("Images des cartes:"));
-    Log.d (TAG, String.format ("  largeur:  %d", getLargeur()));
-    Log.d (TAG, String.format ("  hauteur: %d", getHauteur()));
-    Log.d (TAG, String.format ("  decalage:  %d", getDeplacementMinimum()));
   }
 
   /**
@@ -85,8 +76,6 @@ public class CarteImages
         case CARREAU:
         	couleur = 4;
           break;
-        default:
-          assert (false);
       }
 
     int type;

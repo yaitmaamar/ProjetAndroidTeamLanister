@@ -21,8 +21,6 @@ public class LaMain implements Serializable
   /** Valeur Total.  */
   private byte total;
 
-  
-  private boolean soft;
 
   /** si blackjack.  */
   private boolean blackJack;
@@ -77,9 +75,6 @@ public class LaMain implements Serializable
    */
   public LaMain split ()
   {
-    if (!estPaire ())
-      throw new RuntimeException ("La LaMain n'est pas une paire");
-
     LaMain res = new LaMain ();
     res.ajouter (carte.get (1));
     
@@ -116,7 +111,6 @@ public class LaMain implements Serializable
         --as;
         total -= 10;
       }
-    soft = (as > 0);
     
     blackJack = false;
     paire = false;
@@ -141,14 +135,6 @@ public class LaMain implements Serializable
     return total;
   }
 
-  /**
-   * Query whether we have a soft total.
-   * @return True iff the total is soft.
-   */
-  public boolean isSoft ()
-  {
-    return soft;
-  }
 
   /**
    * Verifie si nous avons un BlackJack.
@@ -171,12 +157,6 @@ public class LaMain implements Serializable
   
   public byte getValeurePaire ()
   {
-    if (!estPaire ())
-      throw new RuntimeException ("Ce n'est pas une paire");
-
-    assert (carte.size () == 2);
-    assert (carte.get (0).getValue () == carte.get (1).getValue ());
-
     return carte.get (0).getValue ();
   }
 

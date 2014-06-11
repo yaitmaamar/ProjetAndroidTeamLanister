@@ -3,7 +3,7 @@ package com.example.projetandroidlp;
 import java.io.Serializable;
 
 /**
- * La Classe carte...
+ * La Classe carte
  */
 public class Carte implements Serializable
 {
@@ -55,8 +55,7 @@ public class Carte implements Serializable
           return 10;
 
         default:
-          assert (type >= 2 && type <= 10);
-          return type;
+           return type;
       }
   }
 

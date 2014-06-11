@@ -29,9 +29,6 @@ public class Jeux implements Serializable
     CROUPIER_GAGNE, /* Avec le meilleur score.  */
   }
 
-  /** Croupier fait un soft 17  */
-  public final boolean Soft17;
-
   /** La main du joueur  */
   private LaMain Joueur;
 
@@ -40,9 +37,6 @@ public class Jeux implements Serializable
 
   /** deck de pioche */
   private transient Pioche Deck;
-
-  /** Si on a déjà calculé l'état du jeu  */
-  private boolean Calcul;
 
   /** Le joueur à fait un double  */
   private boolean Double;
@@ -56,21 +50,23 @@ public class Jeux implements Serializable
   
    /** payer  */
   private float payer;
-
+  
+  /** jeu en état séparer*/
+  private int estSepare;
+  
   /**
    * Constructeur avec les mains du joueur et du croupier et la pioche aléatoire
    * @param p Joueur LaMain
    * @param d Croupier LaMain
    * @param s Carte de la pioche
-   * @param h17 Croupier fait un soft 17?
    * 
    */
-  public Jeux(LaMain p, LaMain d, Pioche s, boolean h17)
+  public Jeux(LaMain p, LaMain d, Pioche s)
   {
     Joueur = p;
     Croupier = d;
     Deck = s;
-    Soft17 = h17;
+    estSepare=0;
 
     Attente = true;
     Double = false;
@@ -84,24 +80,19 @@ public class Jeux implements Serializable
    */
   public void Tirer()
   {
-    //if (!Attente)
-      //throw new RuntimeException ("Le jeu est fini!");
-
     Joueur.ajouter(Deck.getNouvelleCarte());
     Calculer();
   }
 
   /**
-   * Le joueur s'arrete
+   * Le joueur s'arrete et le croupier tire des cartes jusqu'a une limite de 17
    * @throws RuntimeException si le jeu est terminé
    */
   public void Passer()
   {
-//    if (!Attente)
-//      throw new RuntimeException ("Le jeu est fini!");
 
     /* Le croupier joue */
-    while (Croupier.getTotal() < 17 || (Soft17 && Croupier.getTotal () == 17 && Croupier.isSoft()))
+    while (Croupier.getTotal() < 17 )
     	Croupier.ajouter(Deck.getNouvelleCarte());
 
     Attente = false;
@@ -114,11 +105,7 @@ public class Jeux implements Serializable
   */
   public void CoupDouble()
   {
-    //if (!Joueur.peutDouble())
-    //  throw new RuntimeException ("Le joueur ne peut pas faire un coup double "+Joueur.getCards().size());
-    //assert (!Double);
     Double = true;
-
     Tirer();
     Passer();
   }
@@ -135,22 +122,22 @@ public class Jeux implements Serializable
   
   public Jeux CoupSepare(boolean copieCroupier)
   {
-    if (!Attente)
-      throw new RuntimeException ("Le jeu est fini!");
-    
     LaMain newJoueur = Joueur.split();
     LaMain newCroupier;
+    
     if (copieCroupier)
     	newCroupier = new LaMain(Croupier);
     else
     	newCroupier = Croupier;
 
-    Jeux res = new Jeux (newJoueur, newCroupier, Deck, Soft17);
+    Jeux res = new Jeux (newJoueur, newCroupier, Deck);
     res.Separe = true;
     Separe = true;
 
     Tirer();
+    estSepare=1;
     res.Tirer();
+    res.estSepare=2;
 
     return res;
   }
@@ -163,6 +150,15 @@ public class Jeux implements Serializable
   {
     return Attente;
   }
+  
+  /**
+   * Permet de savoir si jeu est dans l'etat séparer
+   * @return True si separe.
+   */
+  public int estSepare()
+  {
+    return estSepare;
+  }
 
   /**
    * Retourne la fin du jeu.
@@ -171,8 +167,6 @@ public class Jeux implements Serializable
    */
   public Fin getFin()
   {
-    if (Attente)
-      throw new RuntimeException ("Le jeu est en cours!");
     return Resultat;
   }
 
@@ -183,8 +177,6 @@ public class Jeux implements Serializable
    */
   public float getPayer ()
   {
-    if (Attente)
-    	throw new RuntimeException ("Le jeu est en cours!");
     return payer;
   }
   
@@ -224,9 +216,6 @@ public class Jeux implements Serializable
    */
   public boolean peutDouble()
   {
-    if (!Attente)
-      throw new RuntimeException ("Le jeu est fini!");
-
     return Joueur.peutDouble();
   }
 
@@ -237,9 +226,6 @@ public class Jeux implements Serializable
    */
   public boolean peutSepare()
   {
-    if (!Attente)
-    	throw new RuntimeException ("Le jeu est fini!");
-
     return Joueur.estPaire();
   }
 
@@ -302,26 +288,21 @@ public class Jeux implements Serializable
       }
     else if (Joueur.getTotal () == Croupier.getTotal ())
       {
-        /* Attente pas connue  */
     	Resultat = Fin.EGALITE;
         payer = 0.0f;
       }
     else if (Joueur.getTotal () > Croupier.getTotal ())
       {
-        /* Attente pas connue */
     	Resultat = Fin.JOUEUR_GAGNE;
         payer = 1.0f;
       }
     else if (Joueur.getTotal () < Croupier.getTotal () && Croupier.getTotal() < 22)
     {
-      /* Attente pas connue */
       Resultat = Fin.CROUPIER_GAGNE;
       payer = -1.0f;
     }
     else 
       {
-        assert (Croupier.getTotal() > 21);
-        /* Attente pas connue */
         Resultat = Fin.CROUPIER_PERDU;
         payer = 1.0f;
       }

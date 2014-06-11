@@ -133,7 +133,6 @@ public void surfaceCreated (SurfaceHolder c)
 }
 
 
-
 @Override
 public void surfaceChanged(SurfaceHolder holder, int format, int width,
 		int height) {
@@ -141,13 +140,11 @@ public void surfaceChanged(SurfaceHolder holder, int format, int width,
 	    largeur = width;
 	    hauteur = height;
 	    maj ();
-	
 }
 
 @Override
 public void surfaceDestroyed(SurfaceHolder holder) {
 	conteneur= null;
-		
 	
 }
 

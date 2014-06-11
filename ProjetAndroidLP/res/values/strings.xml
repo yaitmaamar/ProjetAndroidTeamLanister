@@ -13,16 +13,15 @@
 	<string name="btnSepare">Séparer</string>
 	
 	<string name="joueur_choix">Votre tour</string>
-	<string name="joueur_blackjack">BlackJack, vous avez gagné!</string>
-	<string name="joueur_perdu">Vous avez perdu.</string>
-	<string name="joueur_gagne" formatted="false">Vous avez gagné avec %d contre %d.</string>
-	<string name="croupier_blackjack">La banque a fait un BlackJack, vous avez perdu.</string>
+	<string name="joueur_blackjack">BlackJack, c\'est gagné!</string>
+	<string name="joueur_perdu">C\'est perdu.</string>
+	<string name="joueur_gagne" formatted="false">C\'est gagné avec %d contre %d.</string>
+	<string name="croupier_blackjack">BlackJack de la banque, c\'est perdu.</string>
 	<string name="croupier_perdu">La banque a perdu.</string>
-	<string name="croupier_gagne" formatted="false">Vous avez perdu avec %d contre %d.</string>
+	<string name="croupier_gagne" formatted="false">C\'est perdu avec %d contre %d.</string>
 	<string name="egalite" formatted="false">Égalité avec %d.</string>
 	
 	<string name="total_template">Gain : %.1f $</string>
-	<string name="remaining_template">%d passe.</string>
 	
 	<string name="peudouble">Vous n\'êtes pas autorisé à doubler !</string>
 	<string name="peusepare">Vous n\'êtes pas autorisé à séparer vos cartes !</string>
@@ -30,20 +29,12 @@
 	
 	<string name="affiche_strategie">Afficher stratégie</string>
 	<string name="preferences">Préférences</string>
-	<string name="aide">Aide</string>
+	<string name="aide">Comment jouer ?</string>
 	<string name="a_propos">A propos</string>
-	
-<!-- 	<string name="html_h17">le croupier atteint un 17 souple.</string>
-	<string name="html_noH17">le croupier passe sur 17 souple.</string>
-	<string name="html_joueur_hand">main du joueur</string>
-	<string name="html_croupier_carte">cartes du croupier</string>
-	<string name="html_hard">Total dur</string>
-	<string name="html_soft">Total souple</string>
-	<string name="html_pairs">Paires</string> -->
-	<string name="reset">Reset</string>
-	
-	
+	<string name="a_propos_title">A propos</string>
+	<string name="reset">Reset</string>	
 	<string name="aide_title">Comment jouer ?</string>
+	
 	<string name="aide_para1">La partie oppose le joueur contre la banque. Le but est de battre le croupier sans dépasser 21. 
 		Dès qu\'un joueur fait plus que 21, il est déclaré perdant et perd sa mise initiale.</string>
 	<string name="aide_para2">
@@ -65,14 +56,10 @@
 		Quand la manche est terminée, appuyez n\'importe où sur l\'écran pour commencer une nouvelle manche.
 	</string>
 	
-	<string name="a_propos_title">a_propos</string>
+	
 	<string name="a_propos_version"><b>%s</b> version <b>%s</b>.</string>
 	<string name="a_propos_para1">
 	    Cette application a été créée par Yacine Ait-Maamar, William Roux, et Quentin Barbosa dans le cadre d\'un projet étudiant pour l\'université d\'Orléans.
-	</string>
-	<string name="a_propos_para2">
-	</string>
-	<string name="a_propos_para3">
 	</string>
 	
 	<string name="confirm_reset_titre">

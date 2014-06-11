@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +45,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   private View allLayout;
   /** Text view pour afficher les messages de statut.  */
   private TextView message;
+
   /** Text view pour afficher le montant gagné.  */
   private TextView montant;
 
@@ -116,7 +118,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     super.onSaveInstanceState (etat);
     etat.putFloat ("total", total);
 
-    etat.putInt ("numJeuxs", pileJeux.size ());
+    etat.putInt ("numJeux", pileJeux.size ());
     try
       {
         ByteArrayOutputStream byteOut = new ByteArrayOutputStream ();
@@ -189,7 +191,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         lanceNouveauJeu();
       }
     else
-      majAll();
+      maj();
   }
 
   /**
@@ -236,6 +238,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
         	Toast t = Toast.makeText (this, getString (R.string.separation),Toast.LENGTH_SHORT);
         	 t.setGravity (Gravity.CENTER, 0, 0);
              t.show ();
+             
             Jeux Separe = jeuCourant.CoupSepare(true);
             pileJeux.add (Separe);
           }
@@ -324,21 +327,13 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           dlg.setContentView (R.layout.a_propos);
 
           tv = (TextView) dlg.findViewById (R.id.a_propos_version);
-          final String a_proposVersion = getString (R.string.a_propos_version);
           final String appName = getString (R.string.app_name);
           final String appVersion = getString (R.string.app_version);
-          tv.setText (String.format (a_proposVersion, appName, appVersion));
-
-          tv = (TextView) dlg.findViewById (R.id.a_propos_lien1);
-          tv.setMovementMethod (LinkMovementMethod.getInstance ());
-          tv = (TextView) dlg.findViewById (R.id.a_propos_lien2);
-          tv.setMovementMethod (LinkMovementMethod.getInstance ());
+          final String aproposVersion = getString (R.string.a_propos_version);
+          tv.setText (String.format (aproposVersion, appName, appVersion));
 
           dlg.setTitle (R.string.a_propos_title);
           break;
-
-        default:
-          assert (false);
       }
 
     return dlg;
@@ -349,7 +344,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
    */
   private void lanceNouveauJeu ()
   {
-    final boolean h17 = false;
+
     if (!pileJeux.isEmpty ())
       jeuCourant = pileJeux.remove (pileJeux.size () - 1);
     else
@@ -361,19 +356,10 @@ public class StrategieCoach extends Activity implements View.OnClickListener
             LaMain croupier = new LaMain ();
             croupier.ajouter(deck.getNouvelleCarte ());
 
-            jeuCourant = new Jeux (joueur, croupier, deck, h17);
+            jeuCourant = new Jeux (joueur, croupier, deck);
       }
 
-    assert (jeuCourant != null);
-    majAll ();
-  }
-
-  /**
-   * maj pour un nouveau jeu, avec les affichages et les stratégies
-   */
-  private void majAll ()
-  {
-    maj();
+    maj ();
   }
 
   /**
@@ -386,7 +372,17 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
     String msg = "";
     if (jeuCourant.estEnAttente ())
-      msg = getString (R.string.joueur_choix);
+    {
+    	msg = getString (R.string.joueur_choix);
+    	if (jeuCourant.estSepare()==1)
+    	{
+    		msg="PAQUET n°1";
+    	}
+    	else if (jeuCourant.estSepare()==2)
+    	{
+    		msg="PAQUET n°2";
+    	}
+    }
     else
       {
         final byte joueurTotal = jeuCourant.getJoueurMain ().getTotal ();
@@ -421,10 +417,12 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 
         total += jeuCourant.getPayer();
       }
+    message.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     message.setText (msg);
 
     String extraMsg = "";
     extraMsg = String.format (getString (R.string.total_template), total);
+    montant.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     montant.setText (extraMsg);
   }
 
