@@ -101,8 +101,8 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   public void onCreate (Bundle etat)
   {
     super.onCreate (etat);
-    PreferenceManager.setDefaultValues (this, R.xml.preferences, false);
-    pref = PreferenceManager.getDefaultSharedPreferences (this);
+    /*PreferenceManager.setDefaultValues (this, R.xml.preferences, false);
+    pref = PreferenceManager.getDefaultSharedPreferences (this);*/
     setContentView (R.layout.main);
 
     CarteImages img = new CarteImages (getResources ());
