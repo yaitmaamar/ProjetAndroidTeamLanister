@@ -1,14 +1,9 @@
 package com.example.projetandroidlp;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -19,9 +14,6 @@ import java.util.List;
  */
 public class AffichageDeLaMain implements SurfaceHolder.Callback
 {
-
-  /** Tag de cette classe pour les logs */
-  private static final String TAG = "AffichageDeLaMain";
 
   /** Objet CarteImages à utiliser.  */
   private CarteImages imgs;
@@ -39,8 +31,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
   private int largeur;
   /** Height de la surface.  */
   private int hauteur;
-  
-  private Resources res;
 
   /**
    * Constructeur, utilisant une SurfaceView donnée.
@@ -53,7 +43,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     contexte = c;
     imgs = img;
     vue.getHolder().addCallback(this);
-
     mainActuelle = null;
     conteneur = null;
   }
@@ -79,14 +68,9 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
       return;
 
     final List<Carte> cartes = mainActuelle.getCards();
-    Log.v (TAG, String.format ("Affichage de %d cartes.", cartes.size() ));
-    Log.v (TAG, String.format ("Surface: %d x %d", largeur, hauteur));
 
     final Canvas ecran = conteneur.lockCanvas ();
     ecran.drawARGB(0xFF, 0x3C, 0x6E, 0x23);
-    Paint test = new Paint();
-    ecran.drawCircle(0, 180,45, test);
-    //ecran.drawBitmap(BitmapFactory.decodeResource(res, R.drawable.fond), 0, 0, null); // draw the background
 
     /* Calcul de la largeur et hauteur non mises à l'échelle de toutes les cartes mises ensemble */
     int carteL = imgs.getLargeur();
@@ -94,10 +78,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     int carteDeplacement = imgs.getDeplacementMinimum();
     int totalH = carteH;
     int totalL = carteL + carteDeplacement * (cartes.size() - 1);
-
-    Log.v (TAG, "Avant mise à l'échelle :");
-    Log.v (TAG, String.format ("  carte: %d x %d, déplacement %d", carteL, carteH, carteDeplacement));
-    Log.v (TAG, String.format ("  total: %d x %d", totalL, totalH));
 
     /* Scale those to fit bounds.  */
     final float facteurL = largeur / (float) totalL;
@@ -109,15 +89,9 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     totalH = Math.round (totalH * facteur);
     totalL = Math.round (totalL * facteur);
 
-    Log.v (TAG, String.format ("After scaling by %.4f:", facteur));
-    Log.v (TAG, String.format ("  card: %d x %d, déplacement %d",
-                               carteL, carteH, carteDeplacement));
-    Log.v (TAG, String.format ("  total: %d x %d", totalL, totalH));
-
     /* Trouve la position de départ pour que tout soit centré  */
     final int x = (largeur - totalL) / 2;
     final int y = (hauteur - totalH) / 2;
-    Log.v (TAG, String.format ("Placement initial de la carte en (%d, %d).", x, y));
 
     /* Affiche les cartes une par une */
     int num = 0;
@@ -139,9 +113,9 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
         final String text = contexte.getString (R.string.perdu);
         Paint p = new Paint();
         p.setTextAlign(Paint.Align.CENTER);
-        p.setColor(0xFFFF0000);
+        p.setColor(0xFFA6351C);
 
-        p.setTextSize(carteH * 3 / 4);
+        p.setTextSize(carteH * 1 / 2);
         do
           p.setTextSize (p.getTextSize () * 3 / 4);
         while (p.measureText (text) > largeur * 3 / 4);
