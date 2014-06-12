@@ -36,24 +36,26 @@
 	<string name="aide_title">Comment jouer ?</string>
 	
 	<string name="aide_para1">La partie oppose le joueur contre la banque. Le but est de battre le croupier sans dépasser 21. 
-		Dès qu\'un joueur fait plus que 21, il est déclaré perdant et perd sa mise initiale.</string>
+		Dès qu\'un joueur fait plus que 21, il est déclaré perdant et perd sa mise initiale.\n
+	</string>
 	<string name="aide_para2">
-		La valeur des cartes est établie comme suit :
-		- de 2 à 10 → valeur nominale de la carte
-		- chaque figure ou "tête" → 10 points
-		- l\'As → 1 ou 11 (au choix)
+		La valeur des cartes est établie comme suit :\n
+		- de 2 à 10 → valeur de la carte\n
+		- chaque figure ou "tête" → 10 points\n
+		- l\'As → 1 ou 11 (au choix)\n
 	</string>
 	<string name="aide_para3">
-	   	 Les actions possibles sont :
-	   	 - Tirer une carte
-	   	 - Passer
-	   	 - Doubler la mise. Quand vous choisissez cette option vous ne pourrez piocher qu\'une carte et serez obliger de passer ensuite.
-	   	 - Séparer vos carte. Si vous commencez avec une paire, vous pouvez la séparer pour créer 2 nouvelles mains en piochant 2 cartes supplémentaires. 
+	   	 Les actions possibles sont :\n
+	   	 - Tirer une carte\n
+	   	 - Passer\n
+	   	 - Doubler la mise. Quand vous choisissez cette option vous ne pourrez piocher qu\'une carte et serez obliger de passer ensuite.\n
+	   	 - Séparer vos carte. Si vous commencez avec une paire, vous pouvez la séparer pour créer 2 nouvelles mains en piochant 2 cartes supplémentaires. \n
 	</string>
 	<string name="aide_para4">
 		Sur l\'écran, vous pouvez voir vos cartes (en bas), et celles du croupier (en haut).
 		Pour jouer, choisissez l\'une des actions grâce aux boutons situés en bas de l\'écran.
 		Quand la manche est terminée, appuyez n\'importe où sur l\'écran pour commencer une nouvelle manche.
+		Vous perdez lorsque vos gains tombent à 0$.\n
 	</string>
 	
 	
