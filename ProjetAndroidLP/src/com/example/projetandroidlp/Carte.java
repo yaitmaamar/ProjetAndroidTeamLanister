@@ -10,7 +10,7 @@ public class Carte implements Serializable
 
   private static final long serialVersionUID = 0l;
 
-  public static enum Couleur
+  public enum Couleur
   {
     CARREAU,
     COEUR,

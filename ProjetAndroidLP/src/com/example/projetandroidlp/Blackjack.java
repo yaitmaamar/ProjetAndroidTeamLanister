@@ -106,7 +106,9 @@ public class Blackjack extends Activity implements View.OnClickListener
 
     total = 20.0f;
     pileJeux = new ArrayList<Jeux> ();
-    lanceNouveauJeu();
+    
+    lanceJeuxEssais1();
+    //lanceNouveauJeu();
   }
 
   /**
@@ -350,6 +352,7 @@ public class Blackjack extends Activity implements View.OnClickListener
       jeuCourant = pileJeux.remove (pileJeux.size () - 1);
     else
       {
+    		
             LaMain joueur = new LaMain ();
             joueur.ajouter (deck.getNouvelleCarte ());
             joueur.ajouter(deck.getNouvelleCarte ());
@@ -362,6 +365,34 @@ public class Blackjack extends Activity implements View.OnClickListener
 
     maj ();
   }
+  
+  
+  private void lanceJeuxEssais1()
+  {
+	  if (!pileJeux.isEmpty ())
+	      jeuCourant = pileJeux.remove (pileJeux.size () - 1);
+	    else
+	      {
+	    	
+		            LaMain joueurEssai = new LaMain ();	           
+		            
+		            Carte carteEssai1 = new Carte(Carte.Couleur.TREFLE,(byte) 10);
+		            Carte carteEssai2 = new Carte(Carte.Couleur.COEUR,(byte) 10);
+		            
+		            joueurEssai.ajouter (carteEssai1);
+		            joueurEssai.ajouter(carteEssai2);
+	
+		            LaMain croupierEssai = new LaMain ();
+		            croupierEssai.ajouter(deck.getNouvelleCarte ());
+	
+		            jeuCourant = new Jeux (joueurEssai, croupierEssai, deck);
+
+	      }
+
+	    maj ();
+	   
+  }
+  
 
   /**
    * maj des affichages.
