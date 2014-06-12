@@ -13,7 +13,7 @@ public class PiocheAleatoire implements Pioche
   public static Random rdm = new Random ();
 
   /**
-   * Consructeur.
+   * Constructeur.
    */
   public PiocheAleatoire ()
   {
@@ -24,19 +24,19 @@ public class PiocheAleatoire implements Pioche
    * Donne une nouvelle carte.
    * @return A une nouvelle carte.
    */
-  public Carte getNouvelleCarte ()
+  public Carte getNouvelleCarte()
   {
-    final long typeInt = rdm.nextInt (13) + 1;
-    return new Carte (getCouleurAleatoire (), (byte) typeInt);
+    final long typeInt = rdm.nextInt(13) + 1;
+    return new Carte(getCouleurAleatoire (), (byte) typeInt);
   }
 
   /**
    * Couleur Aleatoire
    * @return une couleur aleatoire.
    */
-  public static Carte.Couleur getCouleurAleatoire ()
+  public static Carte.Couleur getCouleurAleatoire()
   {
-    final int numCouleur = rdm.nextInt (4);
+    final int numCouleur = rdm.nextInt(4);
     Carte.Couleur couleur = Carte.Couleur.COEUR;
     switch (numCouleur)
       {

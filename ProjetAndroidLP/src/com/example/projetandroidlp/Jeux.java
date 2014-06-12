@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 /**
  * 
- * Fonctions générales pour gérer le jeux du BlackJack.
+ * Fonctions générales pour gérer une partie.
  * Traite les actions du joueur et du croupier.
- * Jeux est serialisable pour sauvegarder l'état du jeux
+ * Jeux est serialisable pour sauvegarder l'état de la partie
  * 
  */
 public class Jeux implements Serializable
@@ -21,11 +21,11 @@ public class Jeux implements Serializable
   public enum Fin
   {
     JOUEUR_BLACKJACK,
-    JOUEUR_PERDU,
+    JOUEUR_PERDU, /* En dépassant 21 */
     JOUEUR_GAGNE, /* Avec le meilleur score.  */
     EGALITE,
     CROUPIER_BLACKJACK,
-    CROUPIER_PERDU,
+    CROUPIER_PERDU, /* En dépassant 21 */
     CROUPIER_GAGNE, /* Avec le meilleur score.  */
   }
 
@@ -51,7 +51,7 @@ public class Jeux implements Serializable
    /** payer  */
   private float payer;
   
-  /** jeu en état séparer*/
+  /** jeu en état séparé */
   private int estSepare;
   
   /**
@@ -90,7 +90,6 @@ public class Jeux implements Serializable
    */
   public void Passer()
   {
-
     /* Le croupier joue */
     while (Croupier.getTotal() < 17 )
     	Croupier.ajouter(Deck.getNouvelleCarte());
@@ -111,7 +110,7 @@ public class Jeux implements Serializable
   }
 
   /**
-   * Joue un coup séparer pour le croupier ou le joueur 
+   * Joue un coup séparé pour le croupier ou le joueur 
    * Le joueur peut jouer les deux mains via l'interface
    * et les cartes du croupier seront copiées.
    * 
@@ -143,7 +142,7 @@ public class Jeux implements Serializable
   }
 
   /**
-   * Permet de savoir si jeu est dans l'attente d'une decision
+   * Permet de savoir si jeu est dans l'attente d'une décision
    * @return True si attente.
    */
   public boolean estEnAttente()
@@ -152,7 +151,7 @@ public class Jeux implements Serializable
   }
   
   /**
-   * Permet de savoir si jeu est dans l'etat séparer
+   * Permet de savoir si jeu est dans l'etat séparé
    * @return True si separe.
    */
   public int estSepare()
@@ -179,8 +178,6 @@ public class Jeux implements Serializable
   {
     return payer;
   }
-  
- 
 
   /**
    * Get la main du joueur
@@ -224,7 +221,7 @@ public class Jeux implements Serializable
    * Pour savoir si le joueur a joué
    * @return True si aucun changement
    */
-  public boolean estChange ()
+  public boolean estChange()
   {
     return !Separe && Joueur.getCards().size () == 2;
   }
@@ -298,7 +295,6 @@ public class Jeux implements Serializable
         payer = 1.0f;
       }
     
-
     if (Double)
     	payer *= 2.0f;
   }

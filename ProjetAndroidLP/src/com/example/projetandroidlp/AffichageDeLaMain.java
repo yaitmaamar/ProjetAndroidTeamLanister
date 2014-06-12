@@ -29,7 +29,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
 
   /** Largeur de la surface. */
   private int largeur;
-  /** Height de la surface.  */
+  /** Hauteur de la surface.  */
   private int hauteur;
   
   /** determine si c'est la main du joueur ou du croupier*/
@@ -84,7 +84,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     int totalH = carteH;
     int totalL = carteL + carteDeplacement * (cartes.size() - 1);
     
-    
     String textB="";
     
     if (j==1)
@@ -104,10 +103,8 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     	pB.setTextSize (pB.getTextSize () * 1 / 4);
     while (pB.measureText (textB) > largeur * 1 / 4);
     ecran.drawText (textB,0, (hauteur + pB.getTextSize ()) / 2, pB);    
-    
-    
 
-    /* Scale those to fit bounds.  */
+    /* Mise à l'échelle  */
     final float facteurL = largeur / (float) totalL;
     final float facteurH = hauteur / (float) totalH;
     final float facteur = Math.min (facteurL, facteurH);
@@ -120,8 +117,6 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     /* Trouve la position de départ pour que tout soit centré  */
     final int x = (largeur - totalL) / 2;
     final int y = (hauteur - totalH) / 2;
-    
-   
 
     /* Affiche les cartes une par une */
     int num = 0;
@@ -175,7 +170,6 @@ public void surfaceChanged(SurfaceHolder holder, int format, int width,
 @Override
 public void surfaceDestroyed(SurfaceHolder holder) {
 	conteneur= null;
-	
 }
 
 }

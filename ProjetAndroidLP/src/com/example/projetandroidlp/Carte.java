@@ -40,7 +40,7 @@ public class Carte implements Serializable
   }
 
   /**
-   *
+   * Retourne la valeur de la carte en points
    */
   public byte getValue ()
   {

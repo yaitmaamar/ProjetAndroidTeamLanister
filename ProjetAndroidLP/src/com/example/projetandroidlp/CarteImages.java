@@ -9,7 +9,6 @@ import android.graphics.drawable.Drawable;
  */
 public class CarteImages
 {
-
   /** L'objet qui stocke les ressources  */
   private Resources res;
 

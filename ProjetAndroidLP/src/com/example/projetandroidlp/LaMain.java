@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *La LaMain
+ * LaMain
  */
 public class LaMain implements Serializable
 {
-
   /** Serial version id.  */
   private static final long serialVersionUID = 0l;
 
@@ -21,7 +20,6 @@ public class LaMain implements Serializable
   /** Valeur Total.  */
   private byte total;
 
-
   /** si blackjack.  */
   private boolean blackJack;
 
@@ -29,7 +27,7 @@ public class LaMain implements Serializable
   private boolean paire;
 
   /**
-   *Constructeur de LaMain
+   * Constructeur de LaMain
    */
   public LaMain ()
   {
@@ -50,7 +48,7 @@ public class LaMain implements Serializable
   }
 
   /**
-   * Nettoie .
+   * Nettoie.
    */
   public void reinitialiser ()
   {
@@ -73,7 +71,7 @@ public class LaMain implements Serializable
    * @return La seconde LaMain généré.
    * @throws RuntimeException Si ce n'est pas une pair.
    */
-  public LaMain split ()
+  public LaMain split()
   {
     LaMain res = new LaMain ();
     res.ajouter (carte.get (1));
@@ -88,7 +86,7 @@ public class LaMain implements Serializable
    * Accès à la carte .
    * @return Liste de toutes les cartes.
    */
-  public List<Carte> getCards ()
+  public List<Carte> getCards()
   {
     return carte;
   }
@@ -130,7 +128,7 @@ public class LaMain implements Serializable
    * Obtenir le total.
    * @return Total.
    */
-  public byte getTotal ()
+  public byte getTotal()
   {
     return total;
   }
@@ -140,7 +138,7 @@ public class LaMain implements Serializable
    * Verifie si nous avons un BlackJack.
    * @return True si nous avons un blackjack.
    */
-  public boolean estBlackJack ()
+  public boolean estBlackJack()
   {
     return blackJack;
   }
@@ -164,7 +162,7 @@ public class LaMain implements Serializable
    * Si la LaMain est perdante.
    * @return True si la Main est au dessu de 21.
    */
-  public boolean estPerdante ()
+  public boolean estPerdante()
   {
     return total > 21;
   }
@@ -173,7 +171,7 @@ public class LaMain implements Serializable
    * Si on peut doubler.
    * @return True si on peut doubler.
    */
-  public boolean peutDouble ()
+  public boolean peutDouble()
   {
     return carte.size () == 2;
   }
