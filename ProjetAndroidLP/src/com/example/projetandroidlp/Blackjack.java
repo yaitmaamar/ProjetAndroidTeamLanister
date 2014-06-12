@@ -28,15 +28,14 @@ import java.util.ArrayList;
 /**
  * Classe activity pour les meilleures stratégies possibles.
  */
-public class StrategieCoach extends Activity implements View.OnClickListener
+public class Blackjack extends Activity implements View.OnClickListener
 {
 
   /** ID pour la boîte de dialogue d'aide.  */
   private static final int DIALOG_AIDE = 0;
   /** ID pour la boîte de dialogue à propos.  */
   private static final int DIALOG_A_PROPOS = 1;
-  /** ID pour la boîte de dialogue qui signale que la partie est terminée.  */
-  private static final int DIALOG_PERDU = 2;
+
 
   /** Affichage pour la main du joueur.  */
   private AffichageDeLaMain afficheJoueur;
