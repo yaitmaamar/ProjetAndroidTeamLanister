@@ -180,16 +180,7 @@ public class Jeux implements Serializable
     return payer;
   }
   
-  /**
-   * Reset payer.
-   * @return nouvelle valeur de payer.
-   * @throws RuntimeException si le jeu est toujours en cours.
-   */
-  public float resetPayer()
-  {
-	  payer = 0.0f;
-	  return payer;
-  }
+ 
 
   /**
    * Get la main du joueur
