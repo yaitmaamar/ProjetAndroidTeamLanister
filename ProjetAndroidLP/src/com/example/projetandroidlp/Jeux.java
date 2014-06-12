@@ -91,9 +91,9 @@ public class Jeux implements Serializable
   public void Passer()
   {
     /* Le croupier joue */
-    while (Croupier.getTotal() < 17 )
-    	Croupier.ajouter(Deck.getNouvelleCarte());
-
+	    while (Croupier.getTotal() < 17 )
+	    	Croupier.ajouter(Deck.getNouvelleCarte());
+	
     Attente = false;
     Calculer();
   }
