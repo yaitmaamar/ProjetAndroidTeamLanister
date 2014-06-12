@@ -98,7 +98,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
     
     Paint pB = new Paint();
     pB.setTextAlign(Paint.Align.LEFT);
-    pB.setColor(0xFF000000);
+    pB.setColor(0xFFFFFFFF);
     pB.setTextSize(carteL * 1 / 2);
     do
     	pB.setTextSize (pB.getTextSize () * 1 / 4);
@@ -143,7 +143,7 @@ public class AffichageDeLaMain implements SurfaceHolder.Callback
         final String text = contexte.getString (R.string.perdu);
         Paint p = new Paint();
         p.setTextAlign(Paint.Align.CENTER);
-        p.setColor(0xFFA6351C);
+        p.setColor(0xFFEE0000);
 
         p.setTextSize(carteH * 1 / 2);
         do

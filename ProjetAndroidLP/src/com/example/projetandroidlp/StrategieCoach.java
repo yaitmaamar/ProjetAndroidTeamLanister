@@ -103,7 +103,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     btnDOUBLER.setOnClickListener (this);
     btnSeparer.setOnClickListener (this);
 
-    total = 0.0f;
+    total = 20.0f;
     pileJeux = new ArrayList<Jeux> ();
     lanceNouveauJeu();
   }
