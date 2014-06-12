@@ -35,6 +35,8 @@ public class StrategieCoach extends Activity implements View.OnClickListener
   private static final int DIALOG_AIDE = 0;
   /** ID pour la boîte de dialogue à propos.  */
   private static final int DIALOG_A_PROPOS = 1;
+  /** ID pour la boîte de dialogue qui signale que la partie est terminée.  */
+  private static final int DIALOG_PERDU = 2;
 
   /** Affichage pour la main du joueur.  */
   private AffichageDeLaMain afficheJoueur;
@@ -186,7 +188,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
     /* Si la restauration à echoué, initialisation à vide.  */
     if (pasRestaure)
       {
-        total = 0.0f;
+        total = 20.0f;
         pileJeux = new ArrayList<Jeux>();
         lanceNouveauJeu();
       }
@@ -288,7 +290,7 @@ public class StrategieCoach extends Activity implements View.OnClickListener
 	            @Override
 	            public void onClick(DialogInterface dialog, int which) {
 	            	// Si l'utilisateur a cliqué sur le bouton Oui, on remet à zéro
-	            	total = 0.0f;
+	            	total = 20.0f;
 	            	lanceNouveauJeu();
 	            	maj();
 	            }
@@ -416,6 +418,25 @@ public class StrategieCoach extends Activity implements View.OnClickListener
           }
 
         total += jeuCourant.getPayer();
+        
+        if(total <= 0) {
+            new AlertDialog.Builder(this)
+	            .setTitle(R.string.dialog_perdu_titre)
+	            .setMessage(R.string.dialog_perdu_message)
+	            .setPositiveButton(R.string.dialog_perdu_bouton, new DialogInterface.OnClickListener()
+	        {
+	            @Override
+	            public void onClick(DialogInterface dialog, int which) {
+	            	// Si l'utilisateur a cliqué sur le bouton Oui, on remet à zéro
+	            	total = 20.0f;
+	            	lanceNouveauJeu();
+	            	maj();
+	            }
+	
+	        })
+	        .show();
+        }
+        
       }
     message.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
     message.setText (msg);

@@ -74,4 +74,14 @@
 	<string name="confirm_reset_non">
 	    Non
 	</string>
+	
+	<string name="dialog_perdu_titre">
+	    Dommage !
+	</string>
+	<string name="dialog_perdu_message">
+	    Vous êtes ruiné. Vous avez perdu.
+	</string>
+	<string name="dialog_perdu_bouton">
+	    Recommencer
+	</string>
 </resources>
